@@ -6,7 +6,7 @@ const service = axios.create({baseURL: "http://localhost:5005"})
 
 service.interceptors.request.use((config)=>{
 
-    const token = localStorage.getItem("authToken")
+    const token: string | null = localStorage.getItem("authToken")
 
     if(token){
         config.headers = {
