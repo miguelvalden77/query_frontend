@@ -2,7 +2,7 @@
 import axios from "axios"
 
 
-const service = axios.create({baseURL: "http://localhost:5005"})
+const service = axios.create({baseURL: "http://localhost:5005/api"})
 
 service.interceptors.request.use((config)=>{
 

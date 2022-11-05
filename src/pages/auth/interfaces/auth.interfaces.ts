@@ -1,13 +1,12 @@
 
 
-export default interface event {
-    target: {
-        name: string,
-        value: string
-    }
+export default interface data {
+    username: string,
+    password: string,
+    email?: string 
 }
 
-export default interface data {
+export default interface user {
     username: string,
     password: string,
     email?: string 

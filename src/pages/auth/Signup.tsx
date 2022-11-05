@@ -1,29 +1,61 @@
+// Hooks
 import { useState } from "react"
+
+// Paquetes externos
+import { useNavigate } from "react-router-dom"
+
+// Interfaces
+import data from "./interfaces/auth.interfaces"
+import newUser from "../../services/interfaces/services.interfaces"
+
+// Services
+import { registerUser } from "../../services/auth.services"
 
 
 const Signup = ():JSX.Element =>{
 
-    const [data, setData] = useState({})
+    const navigate = useNavigate()
 
+    const [data, setData] = useState<data>({username: "", password: "", email: ""})
+    
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=> setData({...data, [e.target.name]: e.target.value})
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
+
+        e.preventDefault()
+        const user: newUser  = {username: data.username, email: data.email, password: data.password}
+
+        try{
+
+            await registerUser(user)
+            navigate("/login")
+
+        }
+        catch(err){
+            console.log(err)
+        }
+
+    }
 
     return <main>
         <section>
-            <form action="#">
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username</label>
-                    <input name="username" type="text" />
+                    <input onChange={handleChange} value={data.username} name="username" type="text" />
                 </div>
 
                 <div>
                     <label htmlFor="email">Email</label>
-                    <input name="email" type="text" />
+                    <input onChange={handleChange} value={data.email} name="email" type="text" />
                 </div>
 
                 <div>
                     <label htmlFor="password">Password</label>
-                    <input name="password" type="password" />
+                    <input onChange={handleChange} value={data.password} name="password" type="password" />
                 </div>
+
+                <button>Sign up!</button>
             </form>
         </section>
     </main>

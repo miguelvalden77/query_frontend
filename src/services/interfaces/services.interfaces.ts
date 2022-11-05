@@ -1,11 +1,11 @@
 
 export default interface newUser {
     username: string,
-    email: string,
+    email?: string,
     password: string
 }
 
-export default interface user{
+export default interface userLogged{
     username: string,
     password: string
 }
