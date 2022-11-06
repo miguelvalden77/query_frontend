@@ -16,6 +16,8 @@ import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
 import Error from './pages/Errors/Error'
 import NotFound from './pages/Errors/NotFound'
+import IsPrivate from "./components/HOC/isPrivate"
+import NonUsers from './components/HOC/NonUsers'
 
 
 function App() {
@@ -28,10 +30,10 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/profile' element={<Profile/>}/>
-        <Route path='/allPosts' element={<AllPosts/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/signup' element={<Signup/>}/>
+        <Route path='/profile' element={<IsPrivate><Profile/></IsPrivate>}/>
+        <Route path='/allPosts' element={<IsPrivate><AllPosts/></IsPrivate>}/>
+        <Route path='/login' element={<NonUsers><Login/></NonUsers>}/>
+        <Route path='/signup' element={<NonUsers><Signup/></NonUsers>}/>
 
         {/* Errores */}
         <Route path='/error' element={<Error/>}/>
