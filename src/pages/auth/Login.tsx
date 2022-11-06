@@ -1,5 +1,5 @@
 // Hooks
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useState, useContext } from "react"
 
 // Paquetes externos
 import {useNavigate} from "react-router-dom"
@@ -8,10 +8,11 @@ import {useNavigate} from "react-router-dom"
 import data from "./interfaces/auth.interfaces"
 import userLogged from "../../services/interfaces/services.interfaces"
 
-
 // Services
 import {loginUser} from "../../services/auth.services"
 
+// Context
+import { AuthContext } from "../../context/auth.context"
 
 
 
@@ -19,6 +20,7 @@ import {loginUser} from "../../services/auth.services"
 const Login = ():JSX.Element =>{
 
     const navigate = useNavigate()
+    const {authenticateUser} = useContext(AuthContext)
 
     const [data, setData] = useState<data>({username: "", password: ""})
     const [error, setError] = useState<string>()
@@ -31,14 +33,17 @@ const Login = ():JSX.Element =>{
 
         try{
 
-            await loginUser(usuario)
+            const response = await loginUser(usuario)
+            const authToken = response.data.authToken
+            localStorage.setItem("authToken", authToken)
+            authenticateUser()
+
             navigate("/profile")
 
         }catch(err: any){
 
             if(err.response.status == 400){
                 setError(err.response.data.errorMessage)
-                console.log(err.response.data.errorMessage)
             } else{
                 console.log(err)
                 navigate("/error")

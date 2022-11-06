@@ -12,10 +12,4 @@ export default interface user {
     email?: string 
 }
 
-// export default interface errorMessage {
-//     response: {
-//         data: {
-//             errorMessage: string
-//         }
-//     }
-// }
+
