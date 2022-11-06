@@ -17,6 +17,7 @@ const Signup = ():JSX.Element =>{
     const navigate = useNavigate()
 
     const [data, setData] = useState<data>({username: "", password: "", email: ""})
+    const [error, setError] = useState<string>()
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=> setData({...data, [e.target.name]: e.target.value})
 
@@ -31,13 +32,22 @@ const Signup = ():JSX.Element =>{
             navigate("/login")
 
         }
-        catch(err){
-            console.log(err)
+        catch(err: any){
+
+            if(err.response.status == 400){
+                setError(err.response.data.errorMessage)
+            }else{
+                navigate("/error")
+            }
+            
         }
 
     }
 
     return <main>
+        {
+            error && <p>{error}</p>
+        }
         <section>
             <form onSubmit={handleSubmit}>
                 <div>

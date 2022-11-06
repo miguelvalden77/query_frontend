@@ -8,8 +8,11 @@ import {useNavigate} from "react-router-dom"
 import data from "./interfaces/auth.interfaces"
 import userLogged from "../../services/interfaces/services.interfaces"
 
+
 // Services
 import {loginUser} from "../../services/auth.services"
+
+
 
 
 
@@ -18,6 +21,7 @@ const Login = ():JSX.Element =>{
     const navigate = useNavigate()
 
     const [data, setData] = useState<data>({username: "", password: ""})
+    const [error, setError] = useState<string>()
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>)=> setData({...data, [e.target.name]: e.target.value})
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
@@ -30,14 +34,24 @@ const Login = ():JSX.Element =>{
             await loginUser(usuario)
             navigate("/profile")
 
-        }catch(err){
-            console.log(err)
-            navigate("/error")
+        }catch(err: any){
+
+            if(err.response.status == 400){
+                setError(err.response.data.errorMessage)
+                console.log(err.response.data.errorMessage)
+            } else{
+                console.log(err)
+                navigate("/error")
+            }
+
         }
 
     }
 
     return <main>
+        {
+            error && <p>{error}</p>
+        }
         <section>
             <form onSubmit={handleSubmit}>
                 <div>

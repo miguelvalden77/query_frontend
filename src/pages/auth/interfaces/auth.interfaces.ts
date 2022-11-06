@@ -11,3 +11,11 @@ export default interface user {
     password: string,
     email?: string 
 }
+
+// export default interface errorMessage {
+//     response: {
+//         data: {
+//             errorMessage: string
+//         }
+//     }
+// }

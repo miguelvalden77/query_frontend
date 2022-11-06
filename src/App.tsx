@@ -14,6 +14,8 @@ import AllPosts from './pages/AllPosts'
 import Navbar from './components/Navbar'
 import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
+import Error from './pages/Errors/Error'
+import NotFound from './pages/Errors/NotFound'
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
 
         {/* Errores */}
+        <Route path='/error' element={<Error/>}/>
+        <Route path='/*' element={<NotFound/>}/>
         
 
       </Routes>
