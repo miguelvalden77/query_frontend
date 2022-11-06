@@ -1,5 +1,5 @@
 // Hooks
-import React, {createContext, useEffect, useState} from "react"
+import {createContext, useEffect, useState} from "react"
 import { verifyService } from "../services/auth.services"
 
 // Interface
@@ -9,7 +9,7 @@ import props from "./interfaces.context"
 interface contexto {
     usuario: user | null | undefined,
     isUserActive: boolean | null | undefined,
-    authenticateUser: ()=>{}
+    authenticateUser: any
 }
 
 const AuthContext = createContext({} as contexto)
@@ -44,7 +44,7 @@ function AuthWrapper({children}: props){
 
     }
 
-    const passedContext = {usuario, isUserActive, authenticateUser}
+    const passedContext = {usuario, isUserActive, authenticateUser, setIsUserActive, setUsuario}
 
     return <AuthContext.Provider value={passedContext}>
         {children}
