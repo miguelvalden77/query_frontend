@@ -28,6 +28,7 @@ const Navbar = ():JSX.Element=>{
         <NavLink to={"/"}>Home</NavLink>
         <NavLink to={"/profile"}>Profile</NavLink>
         <NavLink to={"/allPosts"}>All posts</NavLink>
+        <NavLink to={"/post/create"}>Create post</NavLink>
         <button onClick={handleLogout}>Logout</button>
     </nav>
     } else{

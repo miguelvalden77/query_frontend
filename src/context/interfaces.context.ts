@@ -3,7 +3,8 @@
 export default interface user {
     username?: string,
     email?: string,
-    role?: string
+    role?: string,
+    id?: string
 }
 
 export default interface props {
