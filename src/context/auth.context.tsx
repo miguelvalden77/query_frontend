@@ -9,7 +9,7 @@ import props from "./interfaces.context"
 interface contexto {
     usuario: user | null | undefined,
     isUserActive: boolean | null | undefined,
-    authenticateUser: any
+    authenticateUser: ()=> Promise<void>
 }
 
 const AuthContext = createContext({} as contexto)
@@ -24,7 +24,7 @@ function AuthWrapper({children}: props){
         authenticateUser()
     },[])
 
-    const authenticateUser = async ()=>{
+    const authenticateUser = async (): Promise<void>=>{
 
         try{
             

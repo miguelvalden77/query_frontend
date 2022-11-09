@@ -38,12 +38,13 @@ const AddPost = ():JSX.Element=>{
 
     }
 
-    const uploadImage = async (e:any)=>{
+    const uploadImage = async (e: React.ChangeEvent<any>): Promise<void>=>{
 
-        console.log(e.target.files[0])
+        console.log(e?.target.files[0])
 
         const form: any = new FormData()
-        form.append("image", e.target.files[0])
+        form.append("image", e?.target.files[0])
+        console.log(form)
         
 
         try{

@@ -1,6 +1,6 @@
 import service from "./config.service"
 
-const upload = (img:any)=>{
+const upload = (img:string)=>{
     return service.post("/uploader", img)
 }
 

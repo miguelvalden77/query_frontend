@@ -16,3 +16,9 @@ export default interface userLogged{
     password: string
 }
 
+export interface comment {
+    description: string,
+    author: string,
+    post: string
+}
+

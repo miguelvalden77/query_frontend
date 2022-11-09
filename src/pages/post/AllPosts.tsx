@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import AddComment from "../../components/comments/AddComment"
 import { showAllPosts } from "../../services/post.services"
 import post from "./interfaces.post"
 
@@ -31,11 +32,20 @@ const AllPosts = ():JSX.Element=>{
         <p>All posts</p>
         {
             posts && posts.map((e, index)=>{
-                return <article key={index}>
+                return <div key={index}>
+                    <article>
                     <h2>{e.title}</h2>
                     <img src={e.photo} alt="foto" width={200} height={200}/>
                     <p>{e.author.username}</p>
+                    
                 </article>
+                    {
+                        e.comments && e.comments.map((e, index)=>{
+                            return <p key={index}>{e.description}</p>
+                        })
+                    }
+                    <AddComment author={e.author._id} post={e._id}/>
+                </div>
             })
         }
     </main>
