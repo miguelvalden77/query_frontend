@@ -3,30 +3,55 @@ import { AuthContext } from "../../context/auth.context"
 import { useNavigate } from "react-router-dom"
 import {postCreate} from "../../services/interfaces/services.interfaces"
 import { createPost} from "../../services/post.services"
+import { upload } from "../../services/upload.service"
 
 interface data {
     title: string,
-    photo: string,
-    author?: string | undefined | null
+    author: string | undefined | null
 }
+
+
 
 const AddPost = ():JSX.Element=>{
 
     const navigate = useNavigate()
     
     const {usuario} = useContext(AuthContext)
-    const [data, setData] = useState<data>({title: "", photo: "", author: usuario?.username})
+    const [data, setData] = useState<data>({title: "", author: usuario?.id})
+    const [urlImage, setUrlImage] = useState<string>("")
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=> setData({...data, [e.target.name]: e.target.value})
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
 
         e.preventDefault()
-        const post: postCreate = {author: usuario?.id, title: data.title, photo: data.photo}
+        const post: postCreate = {author: usuario?.id, title: data.title, photo: urlImage}
+        console.log(post)
 
         try{
             await createPost(post)
             navigate("/allPosts")
+        }
+        catch(err){
+            console.log(err)
+        }
+
+    }
+
+    const uploadImage = async (e:any)=>{
+
+        console.log(e.target.files[0])
+
+        const form: any = new FormData()
+        form.append("image", e.target.files[0])
+        
+
+        try{
+
+            const response = await upload(form)
+            console.log(response)
+            setUrlImage(response.data.imgUrl)
+
         }
         catch(err){
             console.log(err)
@@ -42,8 +67,10 @@ const AddPost = ():JSX.Element=>{
         </div>
         <div>
             <label htmlFor="photo">Foto</label>
-            <input value={data.photo} onChange={handleChange} type="text" name="photo"/>
+            <input onChange={uploadImage} type="file" name="photo"/>
         </div>
+
+        <img src={urlImage} alt="foto" height={150} width={150}/>
 
         <button>Crear</button>
     </form>

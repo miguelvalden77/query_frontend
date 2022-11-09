@@ -33,6 +33,7 @@ const AllPosts = ():JSX.Element=>{
             posts && posts.map((e, index)=>{
                 return <article key={index}>
                     <h2>{e.title}</h2>
+                    <img src={e.photo} alt="foto" width={200} height={200}/>
                     <p>{e.author.username}</p>
                 </article>
             })
