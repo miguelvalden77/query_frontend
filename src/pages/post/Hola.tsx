@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react"
 import { useParams } from "react-router-dom"
 import AddComment from "../../components/comments/AddComment"
 import { AuthContext } from "../../context/auth.context"
+import { deleteComment } from "../../services/comment.services"
 import { getPost } from "../../services/post.services"
 
 interface comment {
@@ -40,6 +41,17 @@ const Hola = ():JSX.Element =>{
 
     }
 
+    const handleDelete = async (id: string)=>{
+
+        try{
+            await deleteComment(id)  
+            getData()          
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+
     return <main>
         {
             post && <article>
@@ -55,7 +67,7 @@ const Hola = ():JSX.Element =>{
                         return <article key={index}>
                             <p><span>{e.author.username}: </span> {e.description}</p>
                             {
-                                e.author._id == usuario?.id && <button>Delete</button>
+                                e.author._id == usuario?.id && <button onClick={()=>handleDelete(e._id)}>Delete</button>
                             }
                         </article>
                     })
