@@ -20,6 +20,7 @@ import IsPrivate from "./components/HOC/IsPrivate"
 import NonUsers from './components/HOC/NonUsers'
 import CreatePost from './pages/post/CreatePost'
 import SinglePost from './pages/SinglePost'
+import Hola from './pages/post/Hola'
 
 
 function App() {
@@ -31,13 +32,13 @@ function App() {
       <Navbar/>
 
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Hola/>}/>
         <Route path='/profile' element={<IsPrivate><Profile/></IsPrivate>}/>
         <Route path='/allPosts' element={<IsPrivate><AllPosts/></IsPrivate>}/>
         <Route path='/login' element={<NonUsers><Login/></NonUsers>}/>
         <Route path='/signup' element={<NonUsers><Signup/></NonUsers>}/>
         <Route path='/post/create' element={<IsPrivate><CreatePost/></IsPrivate>}/>
-        <Route path='/post/:id/single' element={<SinglePost/>}/>
+        <Route path='/post/:id/single' element={<Hola/>}/>
 
         {/* Errores */}
         <Route path='/error' element={<Error/>}/>

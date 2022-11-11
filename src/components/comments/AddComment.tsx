@@ -1,13 +1,15 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { AuthContext } from "../../context/auth.context"
 import { createComment } from "../../services/comment.services"
 
 interface children {
-    author: string,
     post: string | undefined
 }
 
-const AddComment = ({author, post}: children):JSX.Element=>{
+const AddComment = ({post}: children):JSX.Element=>{
+
+    const {usuario} = useContext(AuthContext)
 
     const navigate = useNavigate()
 
@@ -17,7 +19,7 @@ const AddComment = ({author, post}: children):JSX.Element=>{
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
 
         e.preventDefault()
-        const comment: any = {author, description, post}
+        const comment: any = {author: usuario?.id, description, post}
 
         try{
             await createComment(comment)

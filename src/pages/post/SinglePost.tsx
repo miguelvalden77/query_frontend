@@ -7,6 +7,8 @@ import { getPost } from "../../services/post.services"
 
 const SinglePost = ():JSX.Element =>{
 
+    console.log("Se renderiza")
+
     const {id} = useParams()
 
     const [post, setPost] = useState<any>()
@@ -31,7 +33,7 @@ const SinglePost = ():JSX.Element =>{
     return <main>
         <p>Hola</p>
         
-        <AddComment author={post._id} post={id}/>
+        {/* <AddComment author={post._id} post={id}/> */}
         
     </main>
 }

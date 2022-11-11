@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import AddComment from "../../components/comments/AddComment"
 import { showAllPosts } from "../../services/post.services"
 import post from "./interfaces.post"
@@ -34,7 +34,7 @@ const AllPosts = ():JSX.Element=>{
             posts && posts.map((e, index)=>{
                 return <article key={index}>
 
-                    <a href={`/post/${e._id}/single`}><h2>{e.title}</h2></a>
+                    <Link to={`/post/${e._id}/single`}><h2>{e.title}</h2></Link>
                     <img src={e.photo} alt="foto" width={200} height={200}/>
                     <p>{e.author.username}</p>
                     
