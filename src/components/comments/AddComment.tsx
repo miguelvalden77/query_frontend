@@ -4,7 +4,7 @@ import { createComment } from "../../services/comment.services"
 
 interface children {
     author: string,
-    post: string
+    post: string | undefined
 }
 
 const AddComment = ({author, post}: children):JSX.Element=>{

@@ -32,20 +32,13 @@ const AllPosts = ():JSX.Element=>{
         <p>All posts</p>
         {
             posts && posts.map((e, index)=>{
-                return <div key={index}>
-                    <article>
-                    <h2>{e.title}</h2>
+                return <article key={index}>
+
+                    <a href={`/post/${e._id}/single`}><h2>{e.title}</h2></a>
                     <img src={e.photo} alt="foto" width={200} height={200}/>
                     <p>{e.author.username}</p>
                     
                 </article>
-                    {
-                        e.comments && e.comments.map((e, index)=>{
-                            return <p key={index}>{e.description}</p>
-                        })
-                    }
-                    <AddComment author={e.author._id} post={e._id}/>
-                </div>
             })
         }
     </main>

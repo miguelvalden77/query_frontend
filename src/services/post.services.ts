@@ -12,5 +12,9 @@ const createPost = (post: postCreate)=>{
     return service.post("/post/create", post)
 }
 
+const getPost = (id: string | undefined)=>{
+    return service.get(`/post/${id}`)
+}
 
-export {showAllPosts, createPost}
+
+export {showAllPosts, createPost, getPost}

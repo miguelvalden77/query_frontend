@@ -19,6 +19,7 @@ import NotFound from './pages/Errors/NotFound'
 import IsPrivate from "./components/HOC/IsPrivate"
 import NonUsers from './components/HOC/NonUsers'
 import CreatePost from './pages/post/CreatePost'
+import SinglePost from './pages/SinglePost'
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path='/login' element={<NonUsers><Login/></NonUsers>}/>
         <Route path='/signup' element={<NonUsers><Signup/></NonUsers>}/>
         <Route path='/post/create' element={<IsPrivate><CreatePost/></IsPrivate>}/>
+        <Route path='/post/:id/single' element={<SinglePost/>}/>
 
         {/* Errores */}
         <Route path='/error' element={<Error/>}/>
