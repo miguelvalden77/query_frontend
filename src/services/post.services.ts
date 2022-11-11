@@ -16,5 +16,8 @@ const getPost = (id: string | undefined)=>{
     return service.get(`/post/${id}`)
 }
 
+const deletePost = (id: string | undefined)=>{
+    return service.post(`/post/delete/${id}`)
+}
 
-export {showAllPosts, createPost, getPost}
+export {showAllPosts, createPost, getPost, deletePost}

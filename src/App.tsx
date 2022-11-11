@@ -19,8 +19,7 @@ import NotFound from './pages/Errors/NotFound'
 import IsPrivate from "./components/HOC/IsPrivate"
 import NonUsers from './components/HOC/NonUsers'
 import CreatePost from './pages/post/CreatePost'
-import SinglePost from './pages/SinglePost'
-import Hola from './pages/post/Hola'
+import APost from './pages/post/APost'
 
 
 function App() {
@@ -32,13 +31,13 @@ function App() {
       <Navbar/>
 
       <Routes>
-        <Route path='/' element={<Hola/>}/>
+        <Route path='/' element={<Home/>}/>
         <Route path='/profile' element={<IsPrivate><Profile/></IsPrivate>}/>
         <Route path='/allPosts' element={<IsPrivate><AllPosts/></IsPrivate>}/>
         <Route path='/login' element={<NonUsers><Login/></NonUsers>}/>
         <Route path='/signup' element={<NonUsers><Signup/></NonUsers>}/>
         <Route path='/post/create' element={<IsPrivate><CreatePost/></IsPrivate>}/>
-        <Route path='/post/:id/single' element={<Hola/>}/>
+        <Route path='/post/:id/single' element={<APost/>}/>
 
         {/* Errores */}
         <Route path='/error' element={<Error/>}/>

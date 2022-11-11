@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import AddComment from "../../components/comments/AddComment"
 import { AuthContext } from "../../context/auth.context"
 import { deleteComment } from "../../services/comment.services"
-import { getPost } from "../../services/post.services"
+import { deletePost, getPost } from "../../services/post.services"
 
 interface comment {
     description: string,
@@ -13,9 +13,11 @@ interface comment {
 }
 
 
-const Hola = ():JSX.Element =>{
+const APost = ():JSX.Element =>{
 
     const {usuario} = useContext(AuthContext)
+
+    const navigate = useNavigate()
     
     const {id} = useParams()
     
@@ -52,20 +54,35 @@ const Hola = ():JSX.Element =>{
         }
     }
 
+    const handleDeletePost = async (id: string)=>{
+        try{
+            await deletePost(id)
+            navigate("/allPosts")
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+
     return <main>
         {
             post && <article>
                 <h2>{post.title}</h2>
                 <img src={post.photo} alt="foto" width={200}/>
+                <p>{post.author.username}</p>
             </article>
         }
+        {
+            post?.author._id == usuario?.id && <button onClick={()=>handleDeletePost(post._id)}>Delete post</button>
+        }
+
         {
             comments?.length > 0 ?
             <section>
                 {
                     comments && comments.map((e: any, index: any)=>{
                         return <article key={index}>
-                            <p><span>{e.author.username}: </span> {e.description}</p>
+                            <p><span>{e.author.username}:</span> {e.description}</p>
                             {
                                 e.author._id == usuario?.id && <button onClick={()=>handleDelete(e._id)}>Delete</button>
                             }
@@ -83,4 +100,4 @@ const Hola = ():JSX.Element =>{
     </main>
 }
 
-export default Hola
+export default APost
