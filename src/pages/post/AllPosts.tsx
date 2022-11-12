@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 
 // Paquetes externos
 import { useNavigate, Link } from "react-router-dom"
+import Likes from "../../components/post/Likes"
 
 // Services
 import { showAllPosts } from "../../services/post.services"
@@ -43,6 +44,7 @@ const AllPosts = ():JSX.Element=>{
                     <Link to={`/post/${e._id}/single`}><h2>{e.title}</h2></Link>
                     <img src={e.photo} alt="foto" width={200} height={200}/>
                     <p>{e.author.username}</p>
+                    <Likes getData={getPosts} id={e._id} likes={e.likes}/>
                     
                 </article>
             })
