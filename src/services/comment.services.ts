@@ -16,5 +16,10 @@ const deleteComment = (id: string): Promise<AxiosInstance>=>{
     return service.post(`/comment/delete/${id}`)
 }
 
+const updateAComment = (id: string, description: any): Promise<AxiosInstance>=>{
+    console.log(description)
+    return service.post(`/comment/update/${id}`, description)
+}
 
-export {createComment, deleteComment}
+
+export {createComment, deleteComment, updateAComment}

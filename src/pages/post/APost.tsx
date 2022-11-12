@@ -13,6 +13,7 @@ import AddComment from "../../components/comments/AddComment"
 // Services
 import { deleteComment } from "../../services/comment.services"
 import { deletePost, getPost } from "../../services/post.services"
+import UpdateComment from "../../components/comments/UpdateComment"
 
 interface comment {
     description: string,
@@ -94,6 +95,9 @@ const APost = ():JSX.Element =>{
                             <p><span>{e.author.username}:</span> {e.description}</p>
                             {
                                 e.author._id == usuario?.id && <button onClick={()=>handleDelete(e._id)}>Delete</button>
+                            }
+                            {
+                                e.author._id == usuario?.id && <UpdateComment idComment={e._id} description={e.description}/>
                             }
                         </article>
                     })
