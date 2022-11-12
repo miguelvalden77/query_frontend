@@ -1,7 +1,16 @@
+// Hooks
 import React, { useContext, useState } from "react"
+
+// Context
 import { AuthContext } from "../../context/auth.context"
+
+// Paquetes externos
 import { useNavigate } from "react-router-dom"
+
+// Interfaces
 import {postCreate} from "../../services/interfaces/services.interfaces"
+
+// Services
 import { createPost} from "../../services/post.services"
 import { upload } from "../../services/upload.service"
 

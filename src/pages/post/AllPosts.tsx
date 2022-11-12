@@ -1,7 +1,13 @@
+// Hooks
 import { useEffect, useState } from "react"
+
+// Paquetes externos
 import { useNavigate, Link } from "react-router-dom"
-import AddComment from "../../components/comments/AddComment"
+
+// Services
 import { showAllPosts } from "../../services/post.services"
+
+// Interfaces
 import post from "./interfaces.post"
 
 

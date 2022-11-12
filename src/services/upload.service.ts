@@ -1,3 +1,4 @@
+// Service
 import service from "./config.service"
 
 const upload = (img:string)=>{

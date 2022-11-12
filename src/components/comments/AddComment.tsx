@@ -1,6 +1,13 @@
+// Hooks
 import React, { useContext, useState } from "react"
+
+// Paquetes externos
 import { useNavigate } from "react-router-dom"
+
+// Context
 import { AuthContext } from "../../context/auth.context"
+
+// Services
 import { createComment } from "../../services/comment.services"
 
 interface children {

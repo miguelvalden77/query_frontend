@@ -1,5 +1,7 @@
+// Service
 import service from "./config.service";
 
+// Interfaces
 import {postCreate} from "./interfaces/services.interfaces";
 
 

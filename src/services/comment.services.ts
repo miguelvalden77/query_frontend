@@ -1,5 +1,10 @@
+// Paquetes externos
 import { AxiosInstance } from "axios";
+
+// Service
 import service from "./config.service";
+
+// Interface
 import { comment } from "./interfaces/services.interfaces";
 
 

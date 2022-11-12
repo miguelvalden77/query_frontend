@@ -1,7 +1,16 @@
+// Hooks
 import { useEffect, useState, useContext } from "react"
+
+// Paquetes externos
 import { useNavigate, useParams } from "react-router-dom"
-import AddComment from "../../components/comments/AddComment"
+
+// Context
 import { AuthContext } from "../../context/auth.context"
+
+// Component
+import AddComment from "../../components/comments/AddComment"
+
+// Services
 import { deleteComment } from "../../services/comment.services"
 import { deletePost, getPost } from "../../services/post.services"
 

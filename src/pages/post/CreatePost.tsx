@@ -1,3 +1,4 @@
+// Components
 import AddPost from "../../components/post/AddPost"
 
 

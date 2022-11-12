@@ -1,6 +1,9 @@
+// Hooks
 import { useContext, useEffect, useState } from "react"
+
+// Context
 import { AuthContext } from "../context/auth.context"
-import user from "../context/interfaces.context"
+
 
 
 const Profile = ():JSX.Element=>{

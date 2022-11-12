@@ -7,19 +7,21 @@ import './App.css'
 // Paquetes externos
 import {Route, Routes} from "react-router-dom"
 
-// Páginas / Componentes
+// Pages
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import AllPosts from './pages/post/AllPosts'
-import Navbar from './components/Navbar'
 import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
 import Error from './pages/Errors/Error'
 import NotFound from './pages/Errors/NotFound'
-import IsPrivate from "./components/HOC/IsPrivate"
-import NonUsers from './components/HOC/NonUsers'
 import CreatePost from './pages/post/CreatePost'
 import APost from './pages/post/APost'
+
+// Components
+import Navbar from './components/Navbar'
+import NonUsers from './components/HOC/NonUsers'
+import IsPrivate from "./components/HOC/IsPrivate"
 
 
 function App() {
