@@ -97,7 +97,7 @@ const APost = ():JSX.Element =>{
                                 e.author._id == usuario?.id && <button onClick={()=>handleDelete(e._id)}>Delete</button>
                             }
                             {
-                                e.author._id == usuario?.id && <UpdateComment idComment={e._id} description={e.description}/>
+                                e.author._id == usuario?.id && <UpdateComment getData={getData} idComment={e._id} description={e.description}/>
                             }
                         </article>
                     })
@@ -108,7 +108,7 @@ const APost = ():JSX.Element =>{
         }
 
         {
-            post && <AddComment post={post._id}/>
+            post && <AddComment getData={getData} post={post._id}/>
         }
     </main>
 }

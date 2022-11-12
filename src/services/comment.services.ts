@@ -17,7 +17,6 @@ const deleteComment = (id: string): Promise<AxiosInstance>=>{
 }
 
 const updateAComment = (id: string, description: any): Promise<AxiosInstance>=>{
-    console.log(description)
     return service.post(`/comment/update/${id}`, description)
 }
 

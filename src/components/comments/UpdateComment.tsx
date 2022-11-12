@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { updateAComment } from "../../services/comment.services"
 
 interface props {
     idComment: string,
-    description: string
+    description: string,
+    getData: Function
 }
 
-const UpdateComment = ({idComment, description}: props):JSX.Element=>{
+const UpdateComment = ({idComment, description, getData}: props):JSX.Element=>{
 
-    const navigate = useNavigate()
 
     const [click, setClick] = useState<boolean>(false)
     const [descComment, setDescComment] = useState<string>(description)
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>)=>{
         setDescComment(e.target.value)
-        console.log(e.target.value)
     }
     const handleClick = ()=> setClick(true)
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
@@ -27,7 +25,8 @@ const UpdateComment = ({idComment, description}: props):JSX.Element=>{
             console.log(descComment)
             const comment = {description: descComment}
             await updateAComment(idComment, comment)
-            navigate("/allPosts")
+            getData()
+            setClick(false)
         }
         catch(err){
             console.log(err)

@@ -11,14 +11,13 @@ import { AuthContext } from "../../context/auth.context"
 import { createComment } from "../../services/comment.services"
 
 interface children {
-    post: string | undefined
+    post: string | undefined,
+    getData: Function
 }
 
-const AddComment = ({post}: children):JSX.Element=>{
+const AddComment = ({post, getData}: children):JSX.Element=>{
 
     const {usuario} = useContext(AuthContext)
-
-    const navigate = useNavigate()
 
     const [description, setDescription] = useState<string>("")
 
@@ -30,7 +29,8 @@ const AddComment = ({post}: children):JSX.Element=>{
 
         try{
             await createComment(comment)
-            navigate("/profile")
+            getData()
+            setDescription("")
         }
         catch(err){
             console.log(err)
