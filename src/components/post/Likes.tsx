@@ -4,17 +4,19 @@ import { likePost } from "../../services/like.service"
 interface props {
     likes: number,
     id: string,
-    getData: Function
+    getData: Function,
+    userId: string | undefined
 }
 
-const Likes = ({likes, id, getData}: props):JSX.Element =>{
+const Likes = ({likes, id, getData, userId}: props):JSX.Element =>{
 
     const [info, setInfo] = useState<string>("plus")
     
+    console.log(id)
     const handleLike = async ()=>{
     
         try{
-            await likePost(id, info)
+            await likePost(id, userId)
             if(info == "plus") setInfo("less")
             if(info == "less") setInfo("plus")
             getData()

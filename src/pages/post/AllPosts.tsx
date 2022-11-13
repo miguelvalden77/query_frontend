@@ -1,5 +1,5 @@
 // Hooks
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 
 // Paquetes externos
 import { useNavigate, Link } from "react-router-dom"
@@ -11,9 +11,14 @@ import { showAllPosts } from "../../services/post.services"
 // Interfaces
 import post from "./interfaces.post"
 
+// Context
+import { AuthContext } from "../../context/auth.context"
+
 
 
 const AllPosts = ():JSX.Element=>{
+
+    const {usuario} = useContext(AuthContext)
 
     const navigate = useNavigate()
 
@@ -44,7 +49,7 @@ const AllPosts = ():JSX.Element=>{
                     <Link to={`/post/${e._id}/single`}><h2>{e.title}</h2></Link>
                     <img src={e.photo} alt="foto" width={200} height={200}/>
                     <p>{e.author.username}</p>
-                    <Likes getData={getPosts} id={e._id} likes={e.likes}/>
+                    <Likes getData={getPosts} id={e._id} likes={e.likes} userId={usuario?.username}/>
                     
                 </article>
             })
