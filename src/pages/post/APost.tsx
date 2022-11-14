@@ -14,6 +14,8 @@ import AddComment from "../../components/comments/AddComment"
 import { deleteComment } from "../../services/comment.services"
 import { deletePost, getPost } from "../../services/post.services"
 import UpdateComment from "../../components/comments/UpdateComment"
+import Likes from "../../components/post/Likes"
+import { likesArr } from "../../services/like.service"
 
 interface comment {
     description: string,
@@ -33,6 +35,7 @@ const APost = ():JSX.Element =>{
     
     const [post, setPost] = useState<any>()
     const [comments, setComments] = useState<any>()
+    const [likes, setLikes] = useState<any>()
     
     useEffect(()=>{
         getData()
@@ -42,10 +45,15 @@ const APost = ():JSX.Element =>{
     const getData = async ():Promise<void>=>{
 
         try{
+            // Primero like para tener antes el dato
+            const likesArray = await likesArr(usuario?.id)
+            setLikes(likesArray)
+
             const response = await getPost(id)
 
             setPost(response.data.post)
             setComments(response.data.comments)
+
         }
         catch(err){
             console.log(err)
@@ -80,6 +88,7 @@ const APost = ():JSX.Element =>{
                 <h2>{post.title}</h2>
                 <img src={post.photo} alt="foto" width={200}/>
                 <p>{post.author.username}</p>
+                <Likes getData={getData} usuario={usuario} id={post._id} likes={post.likes} likesArray={likes}/>
             </article>
         }
         {
