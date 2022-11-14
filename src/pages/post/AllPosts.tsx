@@ -13,6 +13,9 @@ import post from "./interfaces.post"
 
 // Context
 import { AuthContext } from "../../context/auth.context"
+import user from "../../context/interfaces.context"
+import { verifyService } from "../../services/auth.services"
+import { likesArr } from "../../services/like.service"
 
 
 
@@ -23,6 +26,7 @@ const AllPosts = ():JSX.Element=>{
     const navigate = useNavigate()
 
     const [posts, setPosts] = useState<post[] | null>(null)
+    const [likes, setLikes] = useState<any>()
 
     useEffect(()=>{
         getPosts()
@@ -31,6 +35,9 @@ const AllPosts = ():JSX.Element=>{
     const getPosts = async ()=>{
 
         try{
+            const likesArray = await likesArr(usuario?.id)
+            setLikes(likesArray)
+
             const response = await showAllPosts()
             setPosts(response.data)
         }
@@ -49,7 +56,7 @@ const AllPosts = ():JSX.Element=>{
                     <Link to={`/post/${e._id}/single`}><h2>{e.title}</h2></Link>
                     <img src={e.photo} alt="foto" width={200} height={200}/>
                     <p>{e.author.username}</p>
-                    <Likes getData={getPosts} id={e._id} likes={e.likes} usuario={usuario}/>
+                    <Likes getData={getPosts} id={e._id} likes={e.likes} likesArray={likes} usuario={usuario}/>
                     
                 </article>
             })

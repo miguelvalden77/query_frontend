@@ -14,8 +14,8 @@ const loginUser = (user: userLogged)=>{
     return service.post("/auth/login", user)
 }
 
-const verifyService = (token?: any)=>{
-    return service.get("/auth/verify", token)
+const verifyService = ()=>{
+    return service.get("/auth/verify")
 }
 
 export {registerUser, loginUser, verifyService}
