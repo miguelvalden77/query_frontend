@@ -1,24 +1,40 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import user from "../../context/interfaces.context"
 import { likePost } from "../../services/like.service"
+
 
 interface props {
     likes: number,
     id: string,
     getData: Function,
-    userId: string | undefined
+    usuario: user | undefined | null
 }
 
-const Likes = ({likes, id, getData, userId}: props):JSX.Element =>{
+const Likes = ({likes, id, getData, usuario}: props):JSX.Element =>{
 
-    const [info, setInfo] = useState<string>("plus")
+    const [info, setInfo] = useState<boolean>()
     
-    console.log(id)
+    useEffect(()=>{
+        verifyLike()
+    }, [])
+
+    const verifyLike = ()=>{
+
+        
+        if(usuario?.postsLike?.indexOf(id) == -1){
+            console.log(usuario.postsLike)
+            setInfo(false)
+        }
+        else{
+            setInfo(true)
+        }
+    }
+
     const handleLike = async ()=>{
     
         try{
-            await likePost(id, userId)
-            if(info == "plus") setInfo("less")
-            if(info == "less") setInfo("plus")
+            await likePost(id, usuario?.username)
+            setInfo(!info)
             getData()
         }
         catch(err){
@@ -27,7 +43,7 @@ const Likes = ({likes, id, getData, userId}: props):JSX.Element =>{
     }
 
     return <div onClick={handleLike}
-    style={info == "plus" ? {backgroundColor: "white", width: "30px", height: "30px", color: "black"}
+    style={info == false ? {backgroundColor: "white", width: "30px", height: "30px", color: "black"}
     : {backgroundColor: "red", width: "30px", height: "30px", color: "white"}}
     >{likes}</div>
 

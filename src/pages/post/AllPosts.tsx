@@ -49,7 +49,7 @@ const AllPosts = ():JSX.Element=>{
                     <Link to={`/post/${e._id}/single`}><h2>{e.title}</h2></Link>
                     <img src={e.photo} alt="foto" width={200} height={200}/>
                     <p>{e.author.username}</p>
-                    <Likes getData={getPosts} id={e._id} likes={e.likes} userId={usuario?.username}/>
+                    <Likes getData={getPosts} id={e._id} likes={e.likes} usuario={usuario}/>
                     
                 </article>
             })
