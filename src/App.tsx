@@ -2,7 +2,7 @@
 import { useState } from 'react'
 
 // Estilos
-import './App.css'
+import './styles/styles.scss'
 
 // Paquetes externos
 import {Route, Routes} from "react-router-dom"
