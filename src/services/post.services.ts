@@ -9,6 +9,9 @@ const showAllPosts = ():Promise<any>=>{
     return service.get("/post/all-posts")
 }
 
+const getUserPosts = (id: string | undefined):Promise<any>=>{
+    return service.get(`/post/user/${id}`)
+}
 
 const createPost = (post: postCreate)=>{
     return service.post("/post/create", post)
@@ -22,4 +25,4 @@ const deletePost = (id: string | undefined)=>{
     return service.post(`/post/delete/${id}`)
 }
 
-export {showAllPosts, createPost, getPost, deletePost}
+export {showAllPosts, createPost, getPost, deletePost, getUserPosts}
