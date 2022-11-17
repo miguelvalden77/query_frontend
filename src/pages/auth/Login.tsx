@@ -2,7 +2,7 @@
 import { ChangeEvent, useState, useContext } from "react"
 
 // Paquetes externos
-import {useNavigate} from "react-router-dom"
+import {useNavigate, NavLink} from "react-router-dom"
 
 // Interfaces
 import data from "./interfaces/auth.interfaces"
@@ -13,8 +13,6 @@ import {loginUser} from "../../services/auth.services"
 
 // Context
 import { AuthContext } from "../../context/auth.context"
-
-
 
 
 const Login = ():JSX.Element =>{
@@ -52,26 +50,26 @@ const Login = ():JSX.Element =>{
         }
 
     }
-
-    return <main>
-        {
-            error && <p>{error}</p>
-        }
-        <section>
-            <form onSubmit={handleSubmit}>
+    
+    return <div className="flex-center min-height">
+        <main className="auth-card m-auto">
+            <form className="login-form" onSubmit={handleSubmit}>
+                <h2 className="t-center">Query</h2>
+                {
+                    error && <p>{error}</p>
+                }
                 <div>
-                    <label htmlFor="username">Username</label>
-                    <input onChange={handleChange} value={data.username} name="username" type="text" />
+                    <input className="input-auth" placeholder="username" onChange={handleChange} value={data.username} name="username" type="text" />
                 </div>
                 <div>
-                    <label htmlFor="password">Password</label>
-                    <input onChange={handleChange} value={data.password} name="password" type="password" />
+                    <input className="input-auth" placeholder="password" onChange={handleChange} value={data.password} name="password" type="password" />
                 </div>
 
-                <button>Login</button>
+                <button className="auth-button">Login</button>
+                <small className="t-center">¿No tienes cuenta?  <NavLink to={"/signup"}>Signup</NavLink></small>
             </form>
-        </section>
     </main>
+    </div>
 
 }
 

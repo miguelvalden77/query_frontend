@@ -2,7 +2,7 @@
 import { useState } from "react"
 
 // Paquetes externos
-import { useNavigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 // Interfaces
 import data from "./interfaces/auth.interfaces"
@@ -44,28 +44,28 @@ const Signup = ():JSX.Element =>{
 
     }
 
-    return <main>
-        {
-            error && <p>{error}</p>
-        }
-        <section>
-            <form onSubmit={handleSubmit}>
+    return <main className="flex-center min-height">
+        <section className="auth-card m-auto">
+            <form className="login-form" onSubmit={handleSubmit}>
+                <h2 className="t-center">Query</h2>
+            {
+                error && <p>{error}</p>
+            }
                 <div>
-                    <label htmlFor="username">Username</label>
-                    <input onChange={handleChange} value={data.username} name="username" type="text" />
+                    <input className="input-auth" placeholder="username" onChange={handleChange} value={data.username} name="username" type="text" />
                 </div>
 
                 <div>
-                    <label htmlFor="email">Email</label>
-                    <input onChange={handleChange} value={data.email} name="email" type="text" />
+                    <input className="input-auth" placeholder="email" onChange={handleChange} value={data.email} name="email" type="text" />
                 </div>
 
                 <div>
-                    <label htmlFor="password">Password</label>
-                    <input onChange={handleChange} value={data.password} name="password" type="password" />
+                    <input className="input-auth" placeholder="password" onChange={handleChange} value={data.password} name="password" type="password" />
                 </div>
 
-                <button>Sign up!</button>
+                <button className="auth-button">Sign up!</button>
+
+                <small className="t-center">¿Ya tienes una cuenta? <NavLink to={"/login"}>Login</NavLink></small>
             </form>
         </section>
     </main>
