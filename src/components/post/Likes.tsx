@@ -1,8 +1,18 @@
+// Hooks
 import { useEffect, useState, useContext } from "react"
+
+// Context
 import { AuthContext } from "../../context/auth.context"
+
+// Interfaces
 import user from "../../context/interfaces.context"
-import { verifyService } from "../../services/auth.services"
+
+// Services
 import { likePost } from "../../services/like.service"
+
+// Recursos
+import Like from "../../assets/like.png"
+import NotLike from "../../assets/not-like.png"
 
 
 interface props {
@@ -56,10 +66,7 @@ const Likes = ({likes, id, getData, likesArray, usuario}: props):JSX.Element =>{
         }
     }
 
-    return <div onClick={handleLike}
-    style={info == false ? {backgroundColor: "white", width: "30px", height: "30px", color: "black"}
-    : {backgroundColor: "red", width: "30px", height: "30px", color: "white"}}
-    >{likes}</div>
+    return <img className="like" onClick={handleLike} width={25} src={info == false ? NotLike : Like}/>
 
 }
 
