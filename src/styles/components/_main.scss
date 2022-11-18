@@ -2,5 +2,8 @@
 .main-body{
     background-color: $main-background;
     min-height: 100vh;
+    position: absolute;
+    width: 100%;
+    top: 0;
 }
 

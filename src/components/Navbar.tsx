@@ -7,6 +7,10 @@ import { useContext } from "react"
 // Context
 import { AuthContext } from "../context/auth.context"
 
+// Recursos
+import Logo from "../assets/icon.png"
+import Logout from "../assets/logout.png"
+
 
 const Navbar = ():JSX.Element=>{
 
@@ -24,19 +28,27 @@ const Navbar = ():JSX.Element=>{
 
 
     if(isUserActive){
-        return <nav>
-        <NavLink to={"/"}>Home</NavLink>
-        <NavLink to={"/profile"}>Profile</NavLink>
-        <NavLink to={"/allPosts"}>All posts</NavLink>
-        <NavLink to={"/post/create"}>Create post</NavLink>
-        <button onClick={handleLogout}>Logout</button>
-    </nav>
+    return <section>
+            <nav className="main-navbar">
+                <NavLink to={"/"}><img width={30} src={Logo} alt="logo"/></NavLink>
+                <section className="nav-container">
+                    <NavLink to={"/profile"}>Profile</NavLink>
+                    <NavLink to={"/allPosts"}>All posts</NavLink>
+                    <NavLink to={"/post/create"}>Create post</NavLink>
+                    <img className="logout" onClick={handleLogout} src={Logout} alt="logout" width={22}/>
+                </section>
+            </nav>
+        </section>
     } else{
-        return <nav>
-        <NavLink to={"/"}>Home</NavLink>
-        <NavLink to={"/login"}>Login</NavLink>
-        <NavLink to={"/signup"}>Signup</NavLink>
-    </nav>
+    return <section className="navbar-section">
+        <nav className="main-navbar">
+            <NavLink to={"/"}><img width={30} src={Logo} alt="logo"/></NavLink>
+            <section className="nav-container">
+                <NavLink to={"/login"}>Login</NavLink>
+                <NavLink to={"/signup"}>Signup</NavLink>
+            </section>
+        </nav>
+    </section>
     }
 
 

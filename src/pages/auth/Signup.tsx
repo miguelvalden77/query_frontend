@@ -44,13 +44,10 @@ const Signup = ():JSX.Element =>{
 
     }
 
-    return <main className="flex-center min-height">
+    return <main className="flex-center flex-column">
         <section className="auth-card m-auto">
             <form className="login-form" onSubmit={handleSubmit}>
                 <h2 className="t-center">Query</h2>
-            {
-                error && <p>{error}</p>
-            }
                 <div>
                     <input className="input-auth" placeholder="username" onChange={handleChange} value={data.username} name="username" type="text" />
                 </div>
@@ -68,6 +65,9 @@ const Signup = ():JSX.Element =>{
                 <small className="t-center">¿Ya tienes una cuenta? <NavLink to={"/login"}>Login</NavLink></small>
             </form>
         </section>
+        {
+            error && <small className="errorMessage t-center">{error}</small>
+        }
     </main>
 
 }

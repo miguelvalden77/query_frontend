@@ -35,3 +35,9 @@
     background-color: $tertiary-blue;
     color: $main-color;
 }
+
+.errorMessage{
+    color: $error-color;
+    max-width: 270px;
+    margin-top: 1rem;
+}
