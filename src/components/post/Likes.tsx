@@ -66,7 +66,7 @@ const Likes = ({likes, id, getData, likesArray, usuario}: props):JSX.Element =>{
         }
     }
 
-    return <img className="like" onClick={handleLike} width={25} src={info == false ? NotLike : Like}/>
+    return <img className="like" onClick={handleLike} width={18} src={info == false ? NotLike : Like}/>
 
 }
 

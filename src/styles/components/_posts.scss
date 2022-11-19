@@ -1,0 +1,54 @@
+
+.main-all-posts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.post-card{
+    border: 1px solid $secondary-gray;
+    width: 500px;
+    background-color: $secondary-background;
+}
+
+.post-section{
+    border-bottom: 1px solid $tertiary-gray;
+
+    img{
+        height: 100%;
+    }
+}
+
+.author-post{
+    padding: 0.5rem;
+}
+
+.img-post{
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: none;
+    margin-bottom: 0.5rem;
+}
+
+.last-post-section{
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-inline: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.likes-container{
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+.title-post{
+    width: 100%;
+}

@@ -47,16 +47,27 @@ const AllPosts = ():JSX.Element=>{
         }   
     }
 
-    return <main>
-        <p>All posts</p>
+    return <main className="main-all-posts">
+
         {
             posts && posts.map((e, index)=>{
-                return <article key={index}>
+                return <article className="post-card" key={index}>
 
-                    <Link to={`/post/${e._id}/single`}><h2>{e.title}</h2></Link>
-                    <img src={e.photo} alt="foto" width={200} height={200}/>
-                    <p>{e.author.username}</p>
-                    <Likes getData={getPosts} id={e._id} likes={e.likes} likesArray={likes} usuario={usuario}/>
+                    <section className="post-section author-post">
+                        <p>{e.author.username}</p>
+                    </section>
+                    <section className="post-section img-post">
+                        <img src={e.photo} alt="foto"/>
+                    </section>
+                    <section className="last-post-section">
+                        <div className="likes-container">
+                            <Likes getData={getPosts} id={e._id} likes={e.likes} likesArray={likes} usuario={usuario}/>
+                            <p>{e.likes}</p>
+                        </div>
+                        <div className="post-title-section">
+                            <Link to={`/post/${e._id}/single`}><h2 className="title-post text-center">{e.title}</h2></Link>
+                        </div>
+                    </section>
                     
                 </article>
             })
