@@ -17,6 +17,9 @@ import user from "../../context/interfaces.context"
 import { verifyService } from "../../services/auth.services"
 import { likesArr } from "../../services/like.service"
 
+// Reecursos
+import avatar from "../../assets/avatar.png"
+
 
 
 const AllPosts = ():JSX.Element=>{
@@ -54,6 +57,9 @@ const AllPosts = ():JSX.Element=>{
                 return <article className="post-card" key={index}>
 
                     <section className="post-section author-post">
+                        <div className="avatar-container">
+                            <img src={avatar} alt="avatar usuario" />
+                        </div>
                         <p>{e.author.username}</p>
                     </section>
                     <section className="post-section img-post">
@@ -62,7 +68,7 @@ const AllPosts = ():JSX.Element=>{
                     <section className="last-post-section">
                         <div className="likes-container">
                             <Likes getData={getPosts} id={e._id} likes={e.likes} likesArray={likes} usuario={usuario}/>
-                            <p>{e.likes}</p>
+                            { e.likes != 1 ? <p>{e.likes} <p>likes</p></p> : <p>{e.likes} <p>like</p></p>}
                         </div>
                         <div className="post-title-section">
                             <Link to={`/post/${e._id}/single`}><h2 className="title-post text-center">{e.title}</h2></Link>

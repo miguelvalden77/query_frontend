@@ -23,6 +23,10 @@
 
 .author-post{
     padding: 0.5rem;
+    padding-left: 0.8rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
 }
 
 .img-post{
@@ -38,17 +42,41 @@
     border-bottom: none;
     display: flex;
     align-items: center;
-    gap: 1rem;
     padding-inline: 1.5rem;
     padding-bottom: 0.5rem;
+}
+
+.avatar-container{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    img{
+        width: 100%;
+    }
 }
 
 .likes-container{
     display: flex;
     gap: 0.25rem;
-    align-items: center;
+    align-items: flex-end;
+
+    p{
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+}
+
+.link-post{
+    display: block;
+    width: 100%;
 }
 
 .title-post{
+    text-align: center;
+}
+
+.post-title-section{
     width: 100%;
 }
