@@ -5,9 +5,8 @@ import AddPost from "../../components/post/AddPost"
 
 const CreatePost = ():JSX.Element =>{
 
-    return <main>
+    return <main className="main-createPost">
         <AddPost/>
-        <p>Hola</p>
     </main>
 
 }

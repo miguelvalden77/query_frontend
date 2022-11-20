@@ -37,12 +37,12 @@ const UpdateComment = ({idComment, description, getData}: props):JSX.Element=>{
         return <div>
         <form onSubmit={handleSubmit}>
             <textarea onChange={handleChange} value={descComment} name="description" cols={20} rows={10}></textarea>
-            <button>Update</button>
+            <button className="update">Update</button>
         </form>
     </div>
     }
     else{
-        return <button onClick={handleClick}>Update comment</button>
+        return <button className="update" onClick={handleClick}>update</button>
     }
 }
 

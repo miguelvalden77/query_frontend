@@ -21,7 +21,7 @@ const AddComment = ({post, getData}: children):JSX.Element=>{
 
     const [description, setDescription] = useState<string>("")
 
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>)=> setDescription(e.target.value)
+    const handleChange = (e:  React.ChangeEvent<HTMLInputElement>)=> setDescription(e.target.value)
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
 
         e.preventDefault()
@@ -39,8 +39,8 @@ const AddComment = ({post, getData}: children):JSX.Element=>{
     }
 
     return <form onSubmit={handleSubmit}>
-        <textarea name="description" cols={30} rows={10} onChange={handleChange} value={description}></textarea>
-        <button>Create Comment</button>
+        <input className="add-comment-input" placeholder="deja un comentario ..." name="description" onChange={handleChange} value={description}/>
+        <button className="create-comment-button">Comment</button>
     </form>
 
 }

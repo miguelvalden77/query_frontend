@@ -69,20 +69,19 @@ const AddPost = ():JSX.Element=>{
 
     }
 
-    return <form onSubmit={handleSubmit}>
-        <p>Form</p>
+    return <form className="form-createPost" onSubmit={handleSubmit}>
+    
         <div>
-            <label htmlFor="title">Title</label>
-            <input value={data.title} onChange={handleChange} type="text" name="title"/>
+            <input className="input-auth input-title" placeholder="Title" value={data.title} onChange={handleChange} type="text" name="title"/>
         </div>
-        <div>
+        <div className="input-post-section">
             <label htmlFor="photo">Foto</label>
             <input onChange={uploadImage} type="file" name="photo"/>
         </div>
 
-        <img src={urlImage} alt="foto" height={150} width={150}/>
+        {urlImage && <img className="img-create" src={urlImage} alt="foto" />}
 
-        <button>Crear</button>
+        <button className="auth-button">Crear</button>
     </form>
 
 }

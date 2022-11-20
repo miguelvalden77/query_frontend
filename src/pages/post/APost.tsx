@@ -17,6 +17,10 @@ import UpdateComment from "../../components/comments/UpdateComment"
 import Likes from "../../components/post/Likes"
 import { likesArr } from "../../services/like.service"
 
+// Recursos
+import avatar from "../../assets/avatar.png"
+
+
 interface comment {
     description: string,
     author: {
@@ -51,6 +55,7 @@ const APost = ():JSX.Element =>{
 
             const response = await getPost(id)
 
+            console.log(response.data.post)
             setPost(response.data.post)
             setComments(response.data.comments)
 
@@ -82,28 +87,34 @@ const APost = ():JSX.Element =>{
         }
     }
 
-    return <main>
+    return <main className="main-only-post">
         {
-            post && <article>
-                <h2>{post.title}</h2>
-                <img src={post.photo} alt="foto" width={200}/>
-                <p>{post.author.username}</p>
-                <Likes getData={getData} usuario={usuario} id={post._id} likes={post.likes} likesArray={likes}/>
-            </article>
-        }
-        {
-            post?.author._id == usuario?.id && <button onClick={()=>handleDeletePost(post._id)}>Delete post</button>
-        }
-
-        {
-            comments?.length > 0 ?
-            <section>
+            post && <article className="post-card">
+                <section className="post-section author-post">
+                        <div className="avatar-container">
+                            <img src={avatar} alt="avatar usuario" />
+                        </div>
+                        <p>{post.author.username}</p>
+                </section>
+                <section className="post-section img-post">
+                    <img src={post.photo} alt="foto"/>
+                </section>
+                <section className="last-post-section">
+                        <div className="likes-container">
+                            <Likes getData={getData} id={post._id} likes={post.likes} likesArray={likes} usuario={usuario}/>
+                            { post.likes != 1 ? <p>{post.likes} <p>likes</p></p> : <p>{post.likes} <p>like</p></p>}
+                        </div>
+                        <div className="post-title-section">
+                            <h2 className="title-post text-center">{post.title}</h2>
+                        </div>
+                </section>
+                <section className="comment-section">
                 {
                     comments && comments.map((e: any, index: any)=>{
-                        return <article key={index}>
-                            <p><span>{e.author.username}:</span> {e.description}</p>
+                        return <article className="comment-container" key={index}>
+                            <p className="comment"><b>{e.author.username}</b> {e.description}</p>
                             {
-                                e.author._id == usuario?.id && <button onClick={()=>handleDelete(e._id)}>Delete</button>
+                                e.author._id == usuario?.id && <button className="delete" onClick={()=>handleDelete(e._id)}>delete</button>
                             }
                             {
                                 e.author._id == usuario?.id && <UpdateComment getData={getData} idComment={e._id} description={e.description}/>
@@ -111,14 +122,16 @@ const APost = ():JSX.Element =>{
                         </article>
                     })
                 }
-            </section>
-            :
-            <p>No hay comentarios</p>
+                </section>
+                <section className="create-comment">
+                    {post && <AddComment getData={getData} post={post._id}/>}
+                </section>
+            </article>
+        }
+        {
+            post?.author._id == usuario?.id && <button onClick={()=>handleDeletePost(post._id)}>Delete post</button>
         }
 
-        {
-            post && <AddComment getData={getData} post={post._id}/>
-        }
     </main>
 }
 
