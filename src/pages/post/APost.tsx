@@ -111,14 +111,16 @@ const APost = ():JSX.Element =>{
                 <section className="comment-section">
                 {
                     comments && comments.map((e: any, index: any)=>{
-                        return <article className="comment-container" key={index}>
-                            <p className="comment"><b>{e.author.username}</b> {e.description}</p>
-                            {
-                                e.author._id == usuario?.id && <button className="delete" onClick={()=>handleDelete(e._id)}>delete</button>
-                            }
-                            {
-                                e.author._id == usuario?.id && <UpdateComment getData={getData} idComment={e._id} description={e.description}/>
-                            }
+                        return <article key={index}>
+                                <p className="comment"><b>{e.author.username}</b> {e.description}</p>
+                                <section className="comment-container">
+                                {
+                                    e.author._id == usuario?.id && <button className="delete" onClick={()=>handleDelete(e._id)}>delete</button>
+                                }
+                                {
+                                    e.author._id == usuario?.id && <UpdateComment getData={getData} idComment={e._id} description={e.description}/>
+                                }
+                            </section>
                         </article>
                     })
                 }

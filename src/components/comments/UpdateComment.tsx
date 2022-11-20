@@ -13,7 +13,7 @@ const UpdateComment = ({idComment, description, getData}: props):JSX.Element=>{
     const [click, setClick] = useState<boolean>(false)
     const [descComment, setDescComment] = useState<string>(description)
 
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>)=>{
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
         setDescComment(e.target.value)
     }
     const handleClick = ()=> setClick(true)
@@ -35,9 +35,9 @@ const UpdateComment = ({idComment, description, getData}: props):JSX.Element=>{
 
     if(click == true){
         return <div>
-        <form onSubmit={handleSubmit}>
-            <textarea onChange={handleChange} value={descComment} name="description" cols={20} rows={10}></textarea>
-            <button className="update">Update</button>
+        <form className="update-comment-form" onSubmit={handleSubmit}>
+            <button className="update">update</button>
+            <input className="update-input" onChange={handleChange} value={descComment} name="description"></input>
         </form>
     </div>
     }

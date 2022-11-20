@@ -43,9 +43,8 @@
 }
 
 .comment-container{
+
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
 
     button{
         border: none;
@@ -53,15 +52,41 @@
         background-color: inherit;
     }
 
-    .delete{
-        color: $error-color;
-    }
-
-    .update{
-        color: $secondary-blue;
-    }
-
+    
+    
     .comment{
         margin-right: 1.25rem;
     }
+}
+
+.update{
+    color: $secondary-blue;
+    cursor: pointer;
+    border: none;
+    font-size: 0.6rem;
+    margin-right: 0.5rem;
+    background-color: inherit;
+}
+
+.delete{
+    cursor: pointer;
+    color: $error-color;
+    border: none;
+    font-size: 0.6rem;
+    background-color: inherit;
+    margin-right: 0.5rem;
+}
+
+.update-comment-form{
+    display: flex;
+    align-items: center;
+}
+
+.update-input{
+    border: 0.5px solid $secondary-gray;
+    width: 100%;
+    padding: 0.25rem;
+    outline: none;
+    border-radius: 3px;
+    width: 270px;
 }
