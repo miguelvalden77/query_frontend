@@ -42,6 +42,8 @@ const AllPosts = ():JSX.Element=>{
             const likesArray = await likesArr(usuario?.id)
             setLikes(likesArray)
 
+            console.log(usuario)
+
             const response = await showAllPosts()
             setPosts(response.data)
 
@@ -60,7 +62,7 @@ const AllPosts = ():JSX.Element=>{
     return <main className="main-all-posts">
 
         {
-            posts && posts.map((e, index)=>{
+            posts ? posts.map((e, index)=>{
                 return <article className="post-card" key={index}>
 
                     <section className="post-section author-post">
@@ -83,7 +85,7 @@ const AllPosts = ():JSX.Element=>{
                     </section>
                     
                 </article>
-            })
+            }): null
         }
     </main>
 
