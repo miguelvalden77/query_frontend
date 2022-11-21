@@ -28,7 +28,7 @@ const AllPosts = ():JSX.Element=>{
 
     const navigate = useNavigate()
 
-    const [posts, setPosts] = useState<post[] | null>(null)
+    const [posts, setPosts] = useState<post[] | null | undefined>(null)
     const [likes, setLikes] = useState<any>()
     const [loader, setLoader] = useState<boolean>(true)
 
@@ -62,7 +62,7 @@ const AllPosts = ():JSX.Element=>{
     return <main className="main-all-posts">
 
         {
-            posts ? posts.map((e, index)=>{
+            posts && posts.length > 0 ? posts.map((e, index)=>{
                 return <article className="post-card" key={index}>
 
                     <section className="post-section author-post">
