@@ -40,6 +40,7 @@ const APost = ():JSX.Element =>{
     const [post, setPost] = useState<any>()
     const [comments, setComments] = useState<any>()
     const [likes, setLikes] = useState<any>()
+    const [loader, setLoader] = useState<boolean>(true)
     
     useEffect(()=>{
         getData()
@@ -58,6 +59,8 @@ const APost = ():JSX.Element =>{
             console.log(response.data.post)
             setPost(response.data.post)
             setComments(response.data.comments)
+
+            setLoader(false)
 
         }
         catch(err){
@@ -85,6 +88,11 @@ const APost = ():JSX.Element =>{
         catch(err){
             console.log(err)
         }
+    }
+
+
+    if(loader){
+        return <h2>Loading ...</h2>
     }
 
     return <main className="main-only-post">

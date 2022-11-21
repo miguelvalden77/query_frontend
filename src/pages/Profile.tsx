@@ -25,6 +25,7 @@ const Profile = ():JSX.Element=>{
 
     const [likes, setLikes] = useState<any>()
     const [posts, setPosts] = useState<any>()
+    const [loader, setLoader] = useState<boolean>(true)
 
     useEffect(()=>{
         getData()
@@ -39,10 +40,16 @@ const Profile = ():JSX.Element=>{
             const response = await getUserPosts(usuario?.id)
             console.log(response)
             setPosts(response.data)
+
+            setLoader(false)
         }
         catch(err){
             console.log(err)
         }
+    }
+
+    if(loader){
+        return <h2>Loading ...</h2>
     }
 
     if(isUserActive == true){

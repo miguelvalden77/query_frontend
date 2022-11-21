@@ -30,6 +30,7 @@ const AllPosts = ():JSX.Element=>{
 
     const [posts, setPosts] = useState<post[] | null>(null)
     const [likes, setLikes] = useState<any>()
+    const [loader, setLoader] = useState<boolean>(true)
 
     useEffect(()=>{
         getPosts()
@@ -43,11 +44,17 @@ const AllPosts = ():JSX.Element=>{
 
             const response = await showAllPosts()
             setPosts(response.data)
+
+            setLoader(false)
         }
         catch(err){
             console.log(err)
             navigate("/error")
         }   
+    }
+
+    if(loader){
+        return <h2>Loading ...</h2>
     }
 
     return <main className="main-all-posts">
