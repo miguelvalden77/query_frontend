@@ -43,7 +43,6 @@ const AllPosts = ():JSX.Element=>{
             const likesArray = await likesArr(usuario?.id)
             setLikes(likesArray)
 
-            console.log(usuario)
 
             const response = await showAllPosts()
             setPosts(response.data)
