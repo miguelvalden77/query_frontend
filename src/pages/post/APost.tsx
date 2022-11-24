@@ -11,7 +11,6 @@ import { AuthContext } from "../../context/auth.context"
 import AddComment from "../../components/comments/AddComment"
 
 // Services
-import { deleteComment } from "../../services/comment.services"
 import { deletePost, getPost } from "../../services/post.services"
 import UpdateComment from "../../components/comments/UpdateComment"
 import Likes from "../../components/post/Likes"
@@ -19,6 +18,7 @@ import { likesArr } from "../../services/like.service"
 
 // Recursos
 import avatar from "../../assets/avatar.png"
+import DeleteComment from "../../components/comments/DeleteComment"
 
 
 interface comment {
@@ -26,6 +26,17 @@ interface comment {
     author: {
         username: string
     }
+}
+
+interface onlyPost {
+    author: {
+        _id: string,
+        username: string
+    },
+    likes: number,
+    photo: string,
+    title: string,
+    _id: any | undefined 
 }
 
 
@@ -37,7 +48,7 @@ const APost = ():JSX.Element =>{
     
     const {id} = useParams()
     
-    const [post, setPost] = useState<any>()
+    const [post, setPost] = useState<onlyPost | any>()
     const [comments, setComments] = useState<any>()
     const [likes, setLikes] = useState<any>()
     const [loader, setLoader] = useState<boolean>(true)
@@ -56,7 +67,7 @@ const APost = ():JSX.Element =>{
 
             const response = await getPost(id)
 
-            console.log(response.data.post)
+            console.log(response.data.post, "POST")
             setPost(response.data.post)
             setComments(response.data.comments)
 
@@ -67,17 +78,6 @@ const APost = ():JSX.Element =>{
             console.log(err)
         }
 
-    }
-
-    const handleDelete = async (id: string)=>{
-
-        try{
-            await deleteComment(id)  
-            getData()          
-        }
-        catch(err){
-            console.log(err)
-        }
     }
 
     const handleDeletePost = async (id: string)=>{
@@ -123,7 +123,7 @@ const APost = ():JSX.Element =>{
                                 <p className="comment"><b>{e.author.username}</b> {e.description}</p>
                                 <section className="comment-container">
                                 {
-                                    e.author._id == usuario?.id && <button className="delete" onClick={()=>handleDelete(e._id)}>delete</button>
+                                    e.author._id == usuario?.id && <DeleteComment getData={getData} idComment={e._id}/>
                                 }
                                 {
                                     e.author._id == usuario?.id && <UpdateComment getData={getData} idComment={e._id} description={e.description}/>

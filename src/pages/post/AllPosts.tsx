@@ -16,7 +16,7 @@ import user from "../../interfaces/context.interfaces"
 import { verifyService } from "../../services/auth.services"
 import { likesArr } from "../../services/like.service"
 
-// Reecursos
+// Recursos
 import avatar from "../../assets/avatar.png"
 
 
