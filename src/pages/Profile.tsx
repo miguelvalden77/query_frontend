@@ -13,9 +13,11 @@ import { Link } from "react-router-dom"
 
 // Componentes
 import Likes from "../components/post/Likes"
+import PersonalDescription from "../components/user/PersonalDescription"
 
 // Servicios
 import { likesArr } from "../services/like.service"
+import { getPersonalDescription } from "../services/user.services"
 
 
 
@@ -26,6 +28,7 @@ const Profile = ():JSX.Element=>{
     const [likes, setLikes] = useState<any>()
     const [posts, setPosts] = useState<any>()
     const [loader, setLoader] = useState<boolean>(true)
+    const [info, setInfo] = useState<any>()
 
     useEffect(()=>{
         getData()
@@ -38,8 +41,10 @@ const Profile = ():JSX.Element=>{
             setLikes(likesArray)
 
             const response = await getUserPosts(usuario?.id)
-            console.log(response)
             setPosts(response.data)
+
+            const personalInfo = await getPersonalDescription(usuario?.id)
+            setInfo(personalInfo.data)
 
             setLoader(false)
         }
@@ -56,6 +61,14 @@ const Profile = ():JSX.Element=>{
         return <main className="main-profile">
 
             {
+                usuario && <PersonalDescription userId={usuario.id} getData={getData}/>
+            }
+
+            {
+                info ? <p>{info}</p> : null
+            }
+
+            {
                 posts && posts.posts.map((e: any, index: any)=>{
                     return <article className="post-card profile-card" key={index}>
 
@@ -70,7 +83,7 @@ const Profile = ():JSX.Element=>{
                     </section>
                     <section className="last-post-section">
                         <div className="likes-container">
-                            <Likes getData={getData} id={e._id} likes={e.likes} likesArray={likes} usuario={usuario}/>
+                            <Likes getData={getData} id={e._id} likesArray={likes} usuario={usuario}/>
                             { e.likes != 1 ? <p>{e.likes} <p>likes</p></p> : <p>{e.likes} <p>like</p></p>}
                         </div>
                         <div className="post-title-section">

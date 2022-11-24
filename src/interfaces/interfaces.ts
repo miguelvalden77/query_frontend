@@ -22,3 +22,7 @@ export interface comment {
     post: string
 }
 
+export interface propsPersonalInfo {
+    userId: string | undefined,
+    getData: ()=>{}
+}
