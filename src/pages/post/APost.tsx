@@ -9,35 +9,21 @@ import { AuthContext } from "../../context/auth.context"
 
 // Component
 import AddComment from "../../components/comments/AddComment"
-
-// Services
-import { deletePost, getPost } from "../../services/post.services"
+import DeletePost from "../../components/post/DeletePost"
 import UpdateComment from "../../components/comments/UpdateComment"
 import Likes from "../../components/post/Likes"
+
+// Services
+import { getPost } from "../../services/post.services"
 import { likesArr } from "../../services/like.service"
 
 // Recursos
 import avatar from "../../assets/avatar.png"
 import DeleteComment from "../../components/comments/DeleteComment"
 
-
-interface comment {
-    description: string,
-    author: {
-        username: string
-    }
-}
-
-interface onlyPost {
-    author: {
-        _id: string,
-        username: string
-    },
-    likes: number,
-    photo: string,
-    title: string,
-    _id: any | undefined 
-}
+// Interfaces
+import {comment} from "../../interfaces/comment.interfaces"
+import {post} from "../../interfaces/post.interfaces"
 
 
 const APost = ():JSX.Element =>{
@@ -48,8 +34,8 @@ const APost = ():JSX.Element =>{
     
     const {id} = useParams()
     
-    const [post, setPost] = useState<onlyPost | any>()
-    const [comments, setComments] = useState<any>()
+    const [post, setPost] = useState<post>()
+    const [comments, setComments] = useState<comment[]>()
     const [likes, setLikes] = useState<any>()
     const [loader, setLoader] = useState<boolean>(true)
     
@@ -67,7 +53,6 @@ const APost = ():JSX.Element =>{
 
             const response = await getPost(id)
 
-            console.log(response.data.post, "POST")
             setPost(response.data.post)
             setComments(response.data.comments)
 
@@ -78,16 +63,6 @@ const APost = ():JSX.Element =>{
             console.log(err)
         }
 
-    }
-
-    const handleDeletePost = async (id: string)=>{
-        try{
-            await deletePost(id)
-            navigate("/allPosts")
-        }
-        catch(err){
-            console.log(err)
-        }
     }
 
 
@@ -110,7 +85,7 @@ const APost = ():JSX.Element =>{
                 <section className="last-post-section">
                         <div className="likes-container">
                             <Likes getData={getData} id={post._id} likesArray={likes} usuario={usuario}/>
-                            { post.likes != 1 ? <p>{post.likes} <p>likes</p></p> : <p>{post.likes} <p>like</p></p>}
+                            { post.likes != 1 ? <p>{post.likes} <span>likes</span></p> : <p>{post.likes} <p>like</p></p>}
                         </div>
                         <div className="post-title-section">
                             <h2 className="title-post text-center">{post.title}</h2>
@@ -118,7 +93,7 @@ const APost = ():JSX.Element =>{
                 </section>
                 <section className="comment-section">
                 {
-                    comments && comments.map((e: any, index: any)=>{
+                    comments && comments.map((e: comment, index: number)=>{
                         return <article key={index}>
                                 <p className="comment"><b>{e.author.username}</b> {e.description}</p>
                                 <section className="comment-container">
@@ -139,7 +114,7 @@ const APost = ():JSX.Element =>{
             </article>
         }
         {
-            post?.author._id == usuario?.id && <button onClick={()=>handleDeletePost(post._id)}>Delete post</button>
+            post?.author._id == usuario?.id && <DeletePost postId={post?._id}/>
         }
 
     </main>

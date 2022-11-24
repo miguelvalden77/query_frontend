@@ -9,15 +9,22 @@ import Likes from "../../components/post/Likes"
 import { showAllPosts } from "../../services/post.services"
 
 // Interfaces
-import post from "../../interfaces/post.interfaces"
+import {post} from "../../interfaces/post.interfaces"
+
 // Context
 import { AuthContext } from "../../context/auth.context"
-import user from "../../interfaces/context.interfaces"
-import { verifyService } from "../../services/auth.services"
 import { likesArr } from "../../services/like.service"
 
 // Recursos
 import avatar from "../../assets/avatar.png"
+
+
+interface arrLikes {
+    data: {
+        _id: string,
+        postsLike?: string[] | undefined
+    }
+}
 
 
 
@@ -28,7 +35,7 @@ const AllPosts = ():JSX.Element=>{
     const navigate = useNavigate()
 
     const [posts, setPosts] = useState<post[] | null | undefined>(null)
-    const [likes, setLikes] = useState<any>()
+    const [likes, setLikes] = useState<arrLikes | any>()
     const [loader, setLoader] = useState<boolean>(true)
 
     useEffect(()=>{
@@ -38,7 +45,6 @@ const AllPosts = ():JSX.Element=>{
     const getPosts = async ()=>{
 
         try{
-            console.log(usuario)
             const likesArray = await likesArr(usuario?.id)
             setLikes(likesArray)
             console.log(likesArray)
@@ -62,7 +68,7 @@ const AllPosts = ():JSX.Element=>{
     return <main className="main-all-posts">
 
         {
-            posts && posts.length > 0 ? posts.map((e, index)=>{
+            posts && posts.length > 0 ? posts.map((e: post, index: number)=>{
                 return <article className="post-card" key={index}>
 
                     <section className="post-section author-post">
@@ -77,7 +83,7 @@ const AllPosts = ():JSX.Element=>{
                     <section className="last-post-section">
                         <div className="likes-container">
                             <Likes getData={getPosts} id={e._id} likesArray={likes} usuario={usuario}/>
-                            { e.likes != 1 ? <p>{e.likes} <p>likes</p></p> : <p>{e.likes} <p>like</p></p>}
+                            { e.likes != 1 ? <p>{e.likes} <span>likes</span></p> : <p>{e.likes} <span>like</span></p>}
                         </div>
                         <div className="post-title-section">
                             <Link to={`/post/${e._id}/single`}><h2 className="title-post text-center">{e.title}</h2></Link>

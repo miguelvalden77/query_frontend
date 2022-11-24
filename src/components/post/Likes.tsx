@@ -5,7 +5,7 @@ import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
 
 // Interfaces
-import user from "../../interfaces/context.interfaces"
+import { propsLike } from "../../interfaces/post.interfaces"
 
 // Services
 import { likePost } from "../../services/like.service"
@@ -14,18 +14,6 @@ import { likePost } from "../../services/like.service"
 import Like from "../../assets/like.png"
 import NotLike from "../../assets/not-like.png"
 
-
-interface propsLike {
-    id: string,
-    getData: Function,
-    likesArray: {
-        data: {
-            postsLike: string[],
-            _id: string
-        }
-    },
-    usuario: user | undefined | null
-}
 
 const Likes = ({id, getData, likesArray, usuario}: propsLike):JSX.Element =>{
 

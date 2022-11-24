@@ -19,6 +19,9 @@ import PersonalDescription from "../components/user/PersonalDescription"
 import { likesArr } from "../services/like.service"
 import { getPersonalDescription } from "../services/user.services"
 
+// Interfaces
+import { post } from "../interfaces/post.interfaces"
+
 
 
 const Profile = ():JSX.Element=>{
@@ -26,9 +29,9 @@ const Profile = ():JSX.Element=>{
     const {usuario, isUserActive} = useContext(AuthContext)
 
     const [likes, setLikes] = useState<any>()
-    const [posts, setPosts] = useState<any>()
+    const [posts, setPosts] = useState<post>()
     const [loader, setLoader] = useState<boolean>(true)
-    const [info, setInfo] = useState<any>()
+    const [info, setInfo] = useState<string>()
 
     useEffect(()=>{
         getData()
@@ -69,7 +72,7 @@ const Profile = ():JSX.Element=>{
             }
 
             {
-                posts && posts.posts.map((e: any, index: any)=>{
+                posts && posts.posts.map((e: any, index: number)=>{
                     return <article className="post-card profile-card" key={index}>
 
                     <section className="post-section author-post">
@@ -84,7 +87,7 @@ const Profile = ():JSX.Element=>{
                     <section className="last-post-section">
                         <div className="likes-container">
                             <Likes getData={getData} id={e._id} likesArray={likes} usuario={usuario}/>
-                            { e.likes != 1 ? <p>{e.likes} <p>likes</p></p> : <p>{e.likes} <p>like</p></p>}
+                            { e.likes != 1 ? <p>{e.likes} <span>likes</span></p> : <p>{e.likes} <p>like</p></p>}
                         </div>
                         <div className="post-title-section">
                             <Link to={`/post/${e._id}/single`}><h2 className="title-post text-center">{e.title}</h2></Link>

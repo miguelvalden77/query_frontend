@@ -1,21 +1,18 @@
 // Hooks
 import React, { useContext, useState } from "react"
 
-// Paquetes externos
-import { useNavigate } from "react-router-dom"
-
 // Context
 import { AuthContext } from "../../context/auth.context"
 
 // Services
 import { createComment } from "../../services/comment.services"
 
-interface children {
-    post: string | undefined,
-    getData: Function
-}
+// Interfaces
+import { comment } from "../../interfaces/interfaces"
+import { commentAddProps } from "../../interfaces/comment.interfaces"
 
-const AddComment = ({post, getData}: children):JSX.Element=>{
+
+const AddComment = ({post, getData}: commentAddProps):JSX.Element=>{
 
     const {usuario} = useContext(AuthContext)
 
@@ -25,7 +22,7 @@ const AddComment = ({post, getData}: children):JSX.Element=>{
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
 
         e.preventDefault()
-        const comment: any = {author: usuario?.id, description, post}
+        const comment: comment = {author: usuario?.id, description, post}
 
         try{
             await createComment(comment)

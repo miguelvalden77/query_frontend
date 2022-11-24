@@ -18,8 +18,9 @@ export default interface newUser {
 
 export interface comment {
     description: string,
-    author: string,
-    post: string
+    author?: string,
+    post?: string,
+    _id?: string
 }
 
 export interface propsPersonalInfo {

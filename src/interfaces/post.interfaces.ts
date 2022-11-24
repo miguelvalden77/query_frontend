@@ -12,17 +12,34 @@ interface comment {
     post: string
 }
 
-export default interface post {
+export interface post {
     _id: string,
     title: string,
     photo: string,
-    author: author,
+    posts: post[],
+    author: author
     comments: comment[],
     likes: number,
     createdAt: string
 }
 
-export default interface propsLike {
+export interface propsLike {
+    id: string,
+    getData: Function,
+    likesArray: {
+        data: {
+            postsLike: string[],
+            _id: string
+        }
+    },
+    usuario: user | undefined | null
+}
+
+export interface propDeletePost {
+    postId: string | undefined
+}
+
+export interface propsLike {
     id: string,
     getData: Function,
     likesArray: {
