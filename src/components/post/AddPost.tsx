@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/auth.context"
 import { useNavigate } from "react-router-dom"
 
 // Interfaces
-import {postCreate} from "../../services/interfaces/services.interfaces"
+import {postCreate} from "../../interfaces/interfaces"
 
 // Services
 import { createPost} from "../../services/post.services"

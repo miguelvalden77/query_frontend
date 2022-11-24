@@ -5,8 +5,8 @@ import { ChangeEvent, useState, useContext } from "react"
 import {useNavigate, NavLink} from "react-router-dom"
 
 // Interfaces
-import data from "./interfaces/auth.interfaces"
-import userLogged from "../../services/interfaces/services.interfaces"
+import data from "../../interfaces/auth.interfaces"
+import userLogged from "../../interfaces/interfaces"
 
 // Services
 import {loginUser} from "../../services/auth.services"

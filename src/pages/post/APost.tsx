@@ -109,7 +109,7 @@ const APost = ():JSX.Element =>{
                 </section>
                 <section className="last-post-section">
                         <div className="likes-container">
-                            <Likes getData={getData} id={post._id} likes={post.likes} likesArray={likes} usuario={usuario}/>
+                            <Likes getData={getData} id={post._id} likesArray={likes} usuario={usuario}/>
                             { post.likes != 1 ? <p>{post.likes} <p>likes</p></p> : <p>{post.likes} <p>like</p></p>}
                         </div>
                         <div className="post-title-section">

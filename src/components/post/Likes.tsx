@@ -5,7 +5,7 @@ import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../../context/auth.context"
 
 // Interfaces
-import user from "../../context/interfaces.context"
+import user from "../../interfaces/context.interfaces"
 
 // Services
 import { likePost } from "../../services/like.service"
@@ -15,8 +15,7 @@ import Like from "../../assets/like.png"
 import NotLike from "../../assets/not-like.png"
 
 
-interface props {
-    likes: number,
+interface propsLike {
     id: string,
     getData: Function,
     likesArray: {
@@ -28,7 +27,7 @@ interface props {
     usuario: user | undefined | null
 }
 
-const Likes = ({likes, id, getData, likesArray, usuario}: props):JSX.Element =>{
+const Likes = ({id, getData, likesArray, usuario}: propsLike):JSX.Element =>{
 
     const [info, setInfo] = useState<boolean>()
     

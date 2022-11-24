@@ -1,7 +1,5 @@
-
-
 export default interface user {
-    username?: string,
+    username: string, //aqui
     email?: string,
     role?: string,
     id?: string,

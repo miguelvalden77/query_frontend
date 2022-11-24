@@ -1,4 +1,4 @@
-
+import user from "./context.interfaces"
 
 interface author {
     _id: string,
@@ -22,3 +22,14 @@ export default interface post {
     createdAt: string
 }
 
+export default interface propsLike {
+    id: string,
+    getData: Function,
+    likesArray: {
+        data: {
+            postsLike: string[],
+            _id: string
+        }
+    },
+    usuario: user | undefined | null
+}

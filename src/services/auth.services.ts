@@ -2,8 +2,8 @@
 import service from "./config.service";
 
 // Interfaces
-import newUser from "./interfaces/services.interfaces";
-import userLogged from "./interfaces/services.interfaces"
+import newUser from "../interfaces/interfaces";
+import userLogged from "../interfaces/interfaces"
 
 
 const registerUser = (newUser: newUser)=>{

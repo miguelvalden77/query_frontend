@@ -1,5 +1,3 @@
-
-
 export default interface data {
     username: string,
     password: string,
@@ -11,5 +9,3 @@ export default interface user {
     password: string,
     email?: string 
 }
-
-

@@ -2,7 +2,7 @@
 import service from "./config.service";
 
 // Interfaces
-import {postCreate} from "./interfaces/services.interfaces";
+import {postCreate} from "../interfaces/interfaces";
 
 
 const showAllPosts = ():Promise<any>=>{

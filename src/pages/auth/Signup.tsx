@@ -5,8 +5,8 @@ import { useState } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 
 // Interfaces
-import data from "./interfaces/auth.interfaces"
-import newUser from "../../services/interfaces/services.interfaces"
+import data from "../../interfaces/auth.interfaces"
+import newUser from "../../interfaces/interfaces"
 
 // Services
 import { registerUser } from "../../services/auth.services"

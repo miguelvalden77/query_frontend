@@ -5,7 +5,7 @@ import { AxiosInstance } from "axios";
 import service from "./config.service";
 
 // Interface
-import { comment } from "./interfaces/services.interfaces";
+import { comment } from "../interfaces/interfaces";
 
 
 const createComment = (comment: comment): Promise<AxiosInstance>=>{

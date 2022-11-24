@@ -9,11 +9,10 @@ import Likes from "../../components/post/Likes"
 import { showAllPosts } from "../../services/post.services"
 
 // Interfaces
-import post from "./interfaces.post"
-
+import post from "../../interfaces/post.interfaces"
 // Context
 import { AuthContext } from "../../context/auth.context"
-import user from "../../context/interfaces.context"
+import user from "../../interfaces/context.interfaces"
 import { verifyService } from "../../services/auth.services"
 import { likesArr } from "../../services/like.service"
 
@@ -76,7 +75,7 @@ const AllPosts = ():JSX.Element=>{
                     </section>
                     <section className="last-post-section">
                         <div className="likes-container">
-                            <Likes getData={getPosts} id={e._id} likes={e.likes} likesArray={likes} usuario={usuario}/>
+                            <Likes getData={getPosts} id={e._id} likesArray={likes} usuario={usuario}/>
                             { e.likes != 1 ? <p>{e.likes} <p>likes</p></p> : <p>{e.likes} <p>like</p></p>}
                         </div>
                         <div className="post-title-section">

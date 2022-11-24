@@ -1,8 +1,12 @@
-
 export interface postCreate{
     title: string,
     photo: string,
     author: string | undefined
+}
+
+export default interface userLogged{
+    username: string,
+    password: string
 }
 
 export default interface newUser {
@@ -11,10 +15,6 @@ export default interface newUser {
     password: string
 }
 
-export default interface userLogged{
-    username: string,
-    password: string
-}
 
 export interface comment {
     description: string,

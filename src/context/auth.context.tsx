@@ -3,8 +3,8 @@ import {createContext, useEffect, useState} from "react"
 import { verifyService } from "../services/auth.services"
 
 // Interface
-import user from "./interfaces.context"
-import props from "./interfaces.context"
+import user from "../interfaces/context.interfaces"
+import props from "../interfaces/context.interfaces"
 
 interface contexto {
     usuario: user | null | undefined,
