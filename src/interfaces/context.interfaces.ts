@@ -3,7 +3,8 @@ export default interface user {
     email?: string,
     role?: string,
     id?: string,
-    postsLike?: string[]
+    postsLike?: string[],
+    profilePhoto?: string
 }
 
 export default interface props {

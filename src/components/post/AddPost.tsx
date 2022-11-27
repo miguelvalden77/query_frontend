@@ -59,7 +59,6 @@ const AddPost = ():JSX.Element=>{
         try{
 
             const response = await upload(form)
-            console.log(response)
             setUrlImage(response.data.imgUrl)
 
         }

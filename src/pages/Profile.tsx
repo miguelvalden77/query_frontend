@@ -2,8 +2,8 @@
 import { useContext, useEffect, useState } from "react"
 
 // Context
-import { AuthContext } from "../context/auth.context"
-import { getUserPosts, showAllPosts } from "../services/post.services"
+import {AuthContext} from "../context/auth.context"
+import {getUserPosts} from "../services/post.services"
 
 // Recursos
 import avatar from "../assets/avatar.png"
@@ -21,12 +21,13 @@ import { getPersonalDescription } from "../services/user.services"
 
 // Interfaces
 import { post } from "../interfaces/post.interfaces"
+import ProfilePhoto from "../components/user/ProfilePhoto"
 
 
 
 const Profile = ():JSX.Element=>{
 
-    const {usuario, isUserActive} = useContext(AuthContext)
+    const {usuario, isUserActive, authenticateUser} = useContext(AuthContext)
 
     const [likes, setLikes] = useState<any>()
     const [posts, setPosts] = useState<post>()
@@ -48,6 +49,7 @@ const Profile = ():JSX.Element=>{
 
             const personalInfo = await getPersonalDescription(usuario?.id)
             setInfo(personalInfo.data)
+            authenticateUser()
 
             setLoader(false)
         }
@@ -61,7 +63,9 @@ const Profile = ():JSX.Element=>{
     }
 
     if(isUserActive == true){
-        return <main className="main-profile">
+        return <main>
+
+            <ProfilePhoto photo={usuario?.profilePhoto} getData={getData} userId={usuario?.id}/>
 
             {
                 usuario && <PersonalDescription userId={usuario.id} getData={getData}/>
@@ -70,6 +74,8 @@ const Profile = ():JSX.Element=>{
             {
                 info ? <p>{info}</p> : null
             }
+            <div className="main-profile">
+
 
             {
                 posts && posts.posts.map((e: any, index: number)=>{
@@ -97,6 +103,7 @@ const Profile = ():JSX.Element=>{
                 </article>
                 })
             }
+            </div>
         </main>
     } else {
         return <p>No</p>
