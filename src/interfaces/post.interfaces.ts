@@ -3,7 +3,8 @@ import user from "./context.interfaces"
 interface author {
     _id: string,
     email: string,
-    username: string
+    username: string,
+    profilePhoto: string
 }
 
 interface comment {

@@ -82,7 +82,7 @@ const APost = ():JSX.Element =>{
             post && <article className="post-card">
                 <section className="post-section author-post">
                         <div className="avatar-container">
-                            <img src={avatar} alt="avatar usuario" />
+                            <img src={post.author.profilePhoto ? post.author.profilePhoto : avatar} alt="avatar usuario" />
                         </div>
                         <p>{post.author.username}</p>
                 </section>

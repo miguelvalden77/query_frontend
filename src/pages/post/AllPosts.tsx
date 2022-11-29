@@ -71,7 +71,7 @@ const AllPosts = ():JSX.Element=>{
                     
                     <section className="post-section author-post">
                         <div className="avatar-container">
-                            <img src={avatar} alt="avatar usuario" />
+                            <img src={e.author.profilePhoto ? e.author.profilePhoto : avatar} alt="avatar usuario" />
                         </div>
                         <p>{e.author.username}</p>
                     </section>
@@ -85,6 +85,9 @@ const AllPosts = ():JSX.Element=>{
                         </div>
                         <div className="post-title-section">
                             <Link to={`/post/${e._id}/single`}><h2 className="title-post text-center">{e.title}</h2></Link>
+                        </div>
+                        <div>
+                            <small>{e.comments.length} comments</small>
                         </div>
                     </section>
                     

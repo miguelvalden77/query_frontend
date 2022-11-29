@@ -42,15 +42,17 @@
 .last-post-section{
     border-bottom: none;
     display: flex;
+    justify-content: space-around;
     align-items: center;
     padding-inline: 1.5rem;
     padding-bottom: 0.5rem;
 }
 
 .avatar-container{
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
+    overflow: hidden;
 
     img{
         width: 100%;
@@ -78,6 +80,4 @@
     text-align: center;
 }
 
-.post-title-section{
-    width: 100%;
-}
+

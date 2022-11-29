@@ -84,7 +84,7 @@ const Profile = ():JSX.Element=>{
 
                     <section className="post-section author-post">
                         <div className="avatar-container">
-                            <img src={avatar} alt="avatar usuario" />
+                            <img src={usuario?.profilePhoto ? usuario.profilePhoto : avatar} alt="avatar usuario" />
                         </div>
                         <p>{e.author.username}</p>
                     </section>
@@ -94,7 +94,7 @@ const Profile = ():JSX.Element=>{
                     <section className="last-post-section">
                         <div className="likes-container">
                             <Likes getData={getData} id={e._id} likesArray={likes} usuario={usuario}/>
-                            { e.likes != 1 ? <p>{e.likes} <span>likes</span></p> : <p>{e.likes} <p>like</p></p>}
+                            { e.likes != 1 ? <p>{e.likes} <span>likes</span></p> : <p>{e.likes} like</p>}
                         </div>
                         <div className="post-title-section">
                             <Link to={`/post/${e._id}/single`}><h2 className="title-post text-center">{e.title}</h2></Link>
