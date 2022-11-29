@@ -25,5 +25,6 @@ export interface comment {
 
 export interface propsPersonalInfo {
     userId: string | undefined,
-    getData: ()=>{}
+    getData: ()=>{},
+    info: string | undefined
 }

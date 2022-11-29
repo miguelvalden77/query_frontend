@@ -38,6 +38,8 @@ const Profile = ():JSX.Element=>{
         getData()
     }, [])
 
+    console.log("Renderizo")
+
     const getData = async ()=>{
         try{
 
@@ -65,20 +67,19 @@ const Profile = ():JSX.Element=>{
     if(isUserActive == true){
         return <main>
 
-            <ProfilePhoto photo={usuario?.profilePhoto} getData={getData} userId={usuario?.id}/>
+            <section className="info-container">
+                <ProfilePhoto photo={usuario?.profilePhoto} getData={getData} userId={usuario?.id}/>
+                <div className="description-container">
+                    <PersonalDescription info={info} userId={usuario?.id} getData={getData}/>
+                </div>
+            </section>
+            
 
-            {
-                usuario && <PersonalDescription userId={usuario.id} getData={getData}/>
-            }
-
-            {
-                info ? <p>{info}</p> : null
-            }
             <div className="main-profile">
 
 
             {
-                posts && posts.posts.map((e: any, index: number)=>{
+                posts && posts.posts.map((e: post, index: number)=>{
                     return <article className="post-card profile-card" key={index}>
 
                     <section className="post-section author-post">

@@ -47,8 +47,6 @@ const AllPosts = ():JSX.Element=>{
         try{
             const likesArray = await likesArr(usuario?.id)
             setLikes(likesArray)
-            console.log(likesArray)
-
 
             const response = await showAllPosts()
             setPosts(response.data)
@@ -70,7 +68,7 @@ const AllPosts = ():JSX.Element=>{
         {
             posts && posts.length > 0 ? posts.map((e: post, index: number)=>{
                 return <article className="post-card" key={index}>
-
+                    
                     <section className="post-section author-post">
                         <div className="avatar-container">
                             <img src={avatar} alt="avatar usuario" />

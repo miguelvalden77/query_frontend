@@ -8,13 +8,12 @@ import { changePersonalDescription } from "../../services/user.services"
 import { propsPersonalInfo } from "../../interfaces/interfaces"
 
 
-const PersonalDescription = ({userId, getData}: propsPersonalInfo)=>{
+const PersonalDescription = ({userId, getData, info}: propsPersonalInfo)=>{
 
-    const [personalInfo, setPersonalInfo] = useState<any>()
+    const [personalInfo, setPersonalInfo] = useState<any>(info)
     const [click, setClick] = useState<boolean>(false)
 
-    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        console.log(e.target.value)
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPersonalInfo(e.target.value)
     }
     const handleClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
@@ -40,11 +39,11 @@ const PersonalDescription = ({userId, getData}: propsPersonalInfo)=>{
 
     }
 
-    return <section>
+    return <section className="description-section">
         {
-            click ? <textarea onChange={handleChange} value={personalInfo} name="personalDescription" cols={30} rows={10}></textarea> : null
+            click ? <input onChange={handleChange} value={personalInfo} name="personalDescription"/> : <p>{personalInfo}</p>
         }
-        <button onClick={handleClick}>Update</button>
+        {click ? <button onClick={handleClick}>Update</button> : <button style={{borderRadius: "3px"}} onClick={handleClick}>Update</button>}
     </section>
 
 }

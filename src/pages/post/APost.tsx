@@ -43,6 +43,12 @@ const APost = ():JSX.Element =>{
         getData()
     },[])
     
+    const getAPost = async ()=> {
+            const response = await getPost(id)
+            setPost(response.data.post)
+            setComments(response.data.comments)
+            console.log("Hola")
+    }
 
     const getData = async ():Promise<void>=>{
 
@@ -51,16 +57,17 @@ const APost = ():JSX.Element =>{
             const likesArray = await likesArr(usuario?.id)
             setLikes(likesArray)
 
-            const response = await getPost(id)
-
-            setPost(response.data.post)
-            setComments(response.data.comments)
+            // const response = await getPost(id)
+            // setPost(response.data.post)
+            // setComments(response.data.comments)
+            getAPost()
 
             setLoader(false)
 
         }
         catch(err){
             console.log(err)
+            navigate("/error")
         }
 
     }
