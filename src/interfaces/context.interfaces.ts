@@ -1,3 +1,5 @@
+import { post } from "./post.interfaces"
+
 export default interface user {
     username: string, //aqui
     email?: string,
@@ -5,7 +7,9 @@ export default interface user {
     id?: string,
     postsLike?: string[],
     profilePhoto?: string,
-    _id?: string
+    _id?: string,
+    personalDescription?: string,
+    posts?: post[] 
 }
 
 export default interface props {

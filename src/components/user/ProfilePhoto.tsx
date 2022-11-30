@@ -1,8 +1,15 @@
 // Recursos
-import { useState } from "react"
 import avatar from "../../assets/avatar.png"
+
+// Services
 import { upload } from "../../services/upload.service"
 import { setImgProfile } from "../../services/user.services"
+
+// Hooks
+import { useContext, useState } from "react"
+
+// Contexto
+import { AuthContext } from "../../context/auth.context"
 
 
 interface propsPhoto{
@@ -14,16 +21,18 @@ interface propsPhoto{
 
 const ProfilePhoto = ({photo, userId, getData}:propsPhoto):JSX.Element=>{
 
+    const {usuario} = useContext(AuthContext)
+
     const [click, setClick] = useState<boolean>(false)
     const [urlImage, setUrlImage] = useState<any>(photo)
+
+    console.log(photo)
 
     const handleSubmit = async ()=>{
         try{
             if(click){
                 const image = {url: urlImage}
-                console.log(click)
-                const response = await setImgProfile(userId, image)
-                console.log(response.data)
+                await setImgProfile(userId, image)
                 setClick(false)
                 getData()
                 return
@@ -63,7 +72,7 @@ const ProfilePhoto = ({photo, userId, getData}:propsPhoto):JSX.Element=>{
             <img src={urlImage ? urlImage : avatar} alt="profile photo"/>
         </div>
         {click ? <input onChange={uploadImage} type="file"/> : null}
-        <button className="photo-button" onClick={handleSubmit}>change photo</button>
+        {usuario?.id == userId && <button className="photo-button" onClick={handleSubmit}>change photo</button>}
     </section>
 }
 

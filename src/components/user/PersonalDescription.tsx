@@ -1,14 +1,17 @@
 // Hooks
-import { useState } from "react"
+import { useContext, useState } from "react"
 
 // Services
 import { changePersonalDescription } from "../../services/user.services"
 
 // Interfaces
 import { propsPersonalInfo } from "../../interfaces/interfaces"
+import { AuthContext, AuthWrapper } from "../../context/auth.context"
 
 
 const PersonalDescription = ({userId, getData, info}: propsPersonalInfo)=>{
+
+    const {usuario} = useContext(AuthContext)
 
     const [personalInfo, setPersonalInfo] = useState<any>(info)
     const [click, setClick] = useState<boolean>(false)
@@ -43,7 +46,7 @@ const PersonalDescription = ({userId, getData, info}: propsPersonalInfo)=>{
         {
             click ? <input onChange={handleChange} value={personalInfo} name="personalDescription"/> : <p>{personalInfo}</p>
         }
-        {click ? <button onClick={handleClick}>Update</button> : <button style={{borderRadius: "3px"}} onClick={handleClick}>Update</button>}
+        {userId == usuario?.id && <button style={click ? {borderRadius: "0px 3px 3px 0px"} : {borderRadius: "3px"}} onClick={handleClick}>Update</button>}
     </section>
 
 }

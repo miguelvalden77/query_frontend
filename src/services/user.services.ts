@@ -26,4 +26,8 @@ const getSearchUsers = (username: string | undefined): Promise<any> =>{
     return service.get(`/user/${username}/all`)
 }
 
-export {changePersonalDescription, getPersonalDescription, setImgProfile, getSearchUsers}
+const getAnUser = (userId: string | undefined):Promise<any>=>{
+    return service.get(`/user/${userId}`)
+}
+
+export {changePersonalDescription, getPersonalDescription, setImgProfile, getSearchUsers, getAnUser}
