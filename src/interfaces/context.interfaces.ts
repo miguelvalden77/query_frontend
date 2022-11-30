@@ -4,7 +4,8 @@ export default interface user {
     role?: string,
     id?: string,
     postsLike?: string[],
-    profilePhoto?: string
+    profilePhoto?: string,
+    _id?: string
 }
 
 export default interface props {

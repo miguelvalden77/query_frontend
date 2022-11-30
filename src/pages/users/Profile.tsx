@@ -2,26 +2,26 @@
 import { useContext, useEffect, useState } from "react"
 
 // Context
-import {AuthContext} from "../context/auth.context"
-import {getUserPosts} from "../services/post.services"
+import {AuthContext} from "../../context/auth.context"
+import {getUserPosts} from "../../services/post.services"
 
 // Recursos
-import avatar from "../assets/avatar.png"
+import avatar from "../../assets/avatar.png"
 
 // Paquetes externos
 import { Link } from "react-router-dom"
 
 // Componentes
-import Likes from "../components/post/Likes"
-import PersonalDescription from "../components/user/PersonalDescription"
+import Likes from "../../components/post/Likes"
+import PersonalDescription from "../../components/user/PersonalDescription"
 
 // Servicios
-import { likesArr } from "../services/like.service"
-import { getPersonalDescription } from "../services/user.services"
+import { likesArr } from "../../services/like.service"
+import { getPersonalDescription } from "../../services/user.services"
 
 // Interfaces
-import { post } from "../interfaces/post.interfaces"
-import ProfilePhoto from "../components/user/ProfilePhoto"
+import { post } from "../../interfaces/post.interfaces"
+import ProfilePhoto from "../../components/user/ProfilePhoto"
 
 
 

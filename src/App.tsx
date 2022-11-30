@@ -9,7 +9,7 @@ import {Route, Routes} from "react-router-dom"
 
 // Pages
 import Home from './pages/Home'
-import Profile from './pages/Profile'
+import Profile from './pages/users/Profile'
 import AllPosts from './pages/post/AllPosts'
 import Login from './pages/auth/Login'
 import Signup from './pages/auth/Signup'
@@ -17,6 +17,8 @@ import Error from './pages/Errors/Error'
 import NotFound from './pages/Errors/NotFound'
 import CreatePost from './pages/post/CreatePost'
 import APost from './pages/post/APost'
+import AllUsers from './pages/users/AllUsers'
+import AnUser from './pages/users/AnUser'
 
 // Components
 import Navbar from './components/Navbar'
@@ -39,7 +41,9 @@ function App() {
         <Route path='/login' element={<NonUsers><Login/></NonUsers>}/>
         <Route path='/signup' element={<NonUsers><Signup/></NonUsers>}/>
         <Route path='/post/create' element={<IsPrivate><CreatePost/></IsPrivate>}/>
-        <Route path='/post/:id/single' element={<APost/>}/>
+        <Route path='/post/:id/single' element={<IsPrivate><APost/></IsPrivate>}/>
+        <Route path='/users/search' element={<IsPrivate><AllUsers/></IsPrivate>}/>
+        <Route path='/user/:id' element={<IsPrivate><AnUser/></IsPrivate>}/>
 
         {/* Errores */}
         <Route path='/error' element={<Error/>}/>

@@ -1,4 +1,5 @@
 // Service
+import { Axios } from "axios";
 import service from "./config.service";
 
 interface personalInfo {
@@ -21,4 +22,8 @@ const setImgProfile = (userId: string | undefined, url: urlImg) =>{
     return service.post(`/user/${userId}/profilePhoto`, url)
 }
 
-export {changePersonalDescription, getPersonalDescription, setImgProfile}
+const getSearchUsers = (username: string | undefined): Promise<any> =>{
+    return service.get(`/user/${username}/all`)
+}
+
+export {changePersonalDescription, getPersonalDescription, setImgProfile, getSearchUsers}

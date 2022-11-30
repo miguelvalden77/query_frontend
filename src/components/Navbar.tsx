@@ -32,7 +32,8 @@ const Navbar = ():JSX.Element=>{
             <nav className="main-navbar">
                 <NavLink to={"/profile"}><img width={30} src={Logo} alt="logo"/></NavLink>
                 <section className="nav-container">
-                    <NavLink to={"/allPosts"}>All posts</NavLink>
+                    <NavLink to={"/users/search"}>Users</NavLink>
+                    <NavLink to={"/allPosts"}>Posts</NavLink>
                     <NavLink to={"/post/create"}>Create post</NavLink>
                     <img className="logout" onClick={handleLogout} src={Logout} alt="logout" width={17}/>
                 </section>
