@@ -18,13 +18,21 @@ import user from "../../interfaces/context.interfaces"
 
 // Recursos
 import avatar from "../../assets/avatar.png"
+
+// Service
 import { likesArr } from "../../services/like.service"
+
+// Components
+import Follow from "../../components/user/Follow"
+import { AuthContext } from "../../context/auth.context"
 
 
 
 const AnUser = ():JSX.Element=>{
 
     const {id} = useParams()
+
+    const {usuario} = useContext(AuthContext)
 
     const [user, setUser] = useState<user>()
     const [likes, setLikes] = useState<any>()
@@ -38,7 +46,8 @@ const AnUser = ():JSX.Element=>{
             const response = await getAnUser(id)
             setUser(response.data)
 
-            const likesArray = await likesArr(response.data.postsLike)
+            const likesArray = await likesArr(usuario?.id)
+            console.log(likesArray)
             setLikes(likesArray)
         }
         catch(err){
@@ -53,6 +62,7 @@ const AnUser = ():JSX.Element=>{
                     <ProfilePhoto photo={user.profilePhoto} userId={user._id} getData={getTheUser}/>
                     <div className="description-container">
                     <PersonalDescription info={user.personalDescription} userId={user._id} getData={getTheUser}/>
+                    <Follow userId={id} id={usuario?._id} friendsArr={usuario?.friends}/>
                     </div>
                 </section>
                 <section className="main-profile">

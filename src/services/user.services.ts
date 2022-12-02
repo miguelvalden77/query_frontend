@@ -30,4 +30,20 @@ const getAnUser = (userId: string | undefined):Promise<any>=>{
     return service.get(`/user/${userId}`)
 }
 
-export {changePersonalDescription, getPersonalDescription, setImgProfile, getSearchUsers, getAnUser}
+const addUser = (userId: string | undefined, id: string | undefined):Promise<any>=>{
+    return service.post(`/user/add/${userId}`, id)
+}
+
+const substractUser = (userId: string | undefined, id: string | undefined):Promise<any>=>{
+    return service.post(`/user/add/${userId}`, id)
+}
+
+export {
+    changePersonalDescription, 
+    getPersonalDescription, 
+    setImgProfile, 
+    getSearchUsers, 
+    getAnUser,
+    addUser,
+    substractUser
+}
