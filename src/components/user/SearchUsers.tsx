@@ -11,7 +11,7 @@ interface propsSearchUser {
 
 const SearchUsers = ({setUsers}:propsSearchUser):JSX.Element =>{
 
-    const [userSearch, setUserSearch] = useState<string>()
+    const [userSearch, setUserSearch] = useState<string>("")
 
     const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>)=> setUserSearch(e.target.value)
     const handleSearch = async ()=> {

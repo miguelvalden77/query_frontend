@@ -30,7 +30,6 @@ function AuthWrapper({children}: props){
         try{
             
             const response = await verifyService()
-            console.log("Contexto")
             setIsUserActive(true)
             setUsuario(response.data)
 

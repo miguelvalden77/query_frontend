@@ -38,8 +38,6 @@ const Profile = ():JSX.Element=>{
         getData()
     }, [])
 
-    console.log("Renderizo")
-
     const getData = async ()=>{
         try{
 

@@ -26,8 +26,6 @@ const ProfilePhoto = ({photo, userId, getData}:propsPhoto):JSX.Element=>{
     const [click, setClick] = useState<boolean>(false)
     const [urlImage, setUrlImage] = useState<any>(photo)
 
-    console.log(photo)
-
     const handleSubmit = async ()=>{
         try{
             if(click){
@@ -37,7 +35,6 @@ const ProfilePhoto = ({photo, userId, getData}:propsPhoto):JSX.Element=>{
                 getData()
                 return
             }
-            console.log(click)
             setClick(true)
 
         }
