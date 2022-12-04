@@ -36,6 +36,7 @@ const AnUser = ():JSX.Element=>{
 
     const [user, setUser] = useState<user>()
     const [likes, setLikes] = useState<any>()
+    const [loader, setLoader] = useState<boolean>(true)
 
     useEffect(()=>{
         getTheUser()
@@ -47,13 +48,18 @@ const AnUser = ():JSX.Element=>{
             setUser(response.data)
 
             const likesArray = await likesArr(usuario?.id)
-            console.log(likesArray)
             setLikes(likesArray)
+
+            setLoader(false)
         }
         catch(err){
             console.log(err)
         }
     }   
+
+    if(loader){
+        return <p>Loading ...</p>
+    }
 
     return <main>
         {
@@ -62,7 +68,7 @@ const AnUser = ():JSX.Element=>{
                     <ProfilePhoto photo={user.profilePhoto} userId={user._id} getData={getTheUser}/>
                     <div className="description-container">
                     <PersonalDescription info={user.personalDescription} userId={user._id} getData={getTheUser}/>
-                    <Follow userId={id} id={usuario?._id} friendsArr={usuario?.friends}/>
+                    <Follow userId={id} username={usuario?.username}/>
                     </div>
                 </section>
                 <section className="main-profile">

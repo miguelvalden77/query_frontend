@@ -35,7 +35,15 @@ const addUser = (userId: string | undefined, id: string | undefined):Promise<any
 }
 
 const substractUser = (userId: string | undefined, id: string | undefined):Promise<any>=>{
-    return service.post(`/user/add/${userId}`, id)
+    return service.post(`/user/substract/${userId}`, id)
+}
+
+const getFriends = (username: string | undefined):Promise<any>=>{
+    return service.get(`/user/friends/${username}`)
+}
+
+const verifyFriends = (userId: string | undefined, username: string | undefined): Promise<any>=>{
+    return service.get(`/user/friendVerify/${userId}/${username}`)
 }
 
 export {
@@ -45,5 +53,7 @@ export {
     getSearchUsers, 
     getAnUser,
     addUser,
-    substractUser
+    substractUser,
+    getFriends,
+    verifyFriends
 }

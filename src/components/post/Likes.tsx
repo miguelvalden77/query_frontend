@@ -23,8 +23,8 @@ const Likes = ({id, getData, likesArray, usuario}: propsLike):JSX.Element =>{
         verifyLike()
     }, [])
     
+    console.log(likesArray)
     const verifyLike = async ()=>{
-        console.log(likesArray.data.postsLike)
         
         try{
         
