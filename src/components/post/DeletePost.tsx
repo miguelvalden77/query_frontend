@@ -22,7 +22,7 @@ const DeletePost =({postId}: propDeletePost):JSX.Element=>{
         }
     }
 
-    return <button onClick={handleDeletePost}>Delete post</button>
+    return <button className="delete-post-button" onClick={handleDeletePost}>Delete post</button>
 
 }
 

@@ -40,6 +40,7 @@
     font-size: 0.65rem;
     background-color: inherit;
     margin-right: 0.5rem;
+    cursor: pointer;
 }
 
 .comment-container{
@@ -89,4 +90,14 @@
     outline: none;
     border-radius: 3px;
     width: 270px;
+}
+
+.delete-post-button{
+    color: $error-color;
+    border: 1px solid $error-color;
+    background-color: transparent;
+    border-radius: 3px;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
 }

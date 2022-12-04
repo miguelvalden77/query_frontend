@@ -49,7 +49,7 @@ const AllPosts = ():JSX.Element=>{
             setLikes(likesArray)
 
             const response = await showAllPosts()
-            setPosts(response.data)
+            setPosts(response.data.reverse())
 
             setLoader(false)
         }

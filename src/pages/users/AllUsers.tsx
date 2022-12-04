@@ -28,7 +28,7 @@ const AllUsers = (): JSX.Element =>{
                         <Link to={`/user/${e._id}`}><h3>{e.username}</h3></Link>
                     </article>
                 })
-                : <h2>Sin resultados</h2>
+                : <h2 className="no-users">Sin resultados</h2>
             }
         </section>
     </main>
