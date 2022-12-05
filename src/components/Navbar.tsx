@@ -1,8 +1,9 @@
 // Paquetes externos
 import {NavLink, useNavigate} from "react-router-dom"
+import { useMediaQuery } from "react-responsive"
 
 // Hooks
-import { useContext } from "react"
+import { useContext, useRef, useState } from "react"
 
 // Context
 import { AuthContext } from "../context/auth.context"
@@ -15,7 +16,7 @@ import Logout from "../assets/logout.png"
 const Navbar = ():JSX.Element=>{
 
     const navigate = useNavigate()
-
+    const isDesktop = useMediaQuery({query: "(min-width: 960px)"})
     const {isUserActive, authenticateUser} = useContext(AuthContext)
 
     const handleLogout = ()=>{
@@ -27,8 +28,8 @@ const Navbar = ():JSX.Element=>{
     }
 
 
-    if(isUserActive){
-    return <section>
+    if(isUserActive){ 
+        return <section>
             <nav className="main-navbar">
                 <NavLink to={"/profile"}><img width={30} src={Logo} alt="logo"/></NavLink>
                 <section className="nav-container">
@@ -39,6 +40,7 @@ const Navbar = ():JSX.Element=>{
                 </section>
             </nav>
         </section>
+
     } else{
     return <section className="navbar-section">
         <nav className="main-navbar">
