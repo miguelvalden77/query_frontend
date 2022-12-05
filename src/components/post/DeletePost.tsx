@@ -18,7 +18,7 @@ const DeletePost =({postId}: propDeletePost):JSX.Element=>{
             navigate("/allPosts")
         }
         catch(err){
-            console.log(err)
+            navigate("/error")
         }
     }
 

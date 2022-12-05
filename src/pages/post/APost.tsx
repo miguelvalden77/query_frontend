@@ -47,7 +47,6 @@ const APost = ():JSX.Element =>{
             const response = await getPost(id)
             setPost(response.data.post)
             setComments(response.data.comments)
-            console.log("Hola")
     }
 
     const getData = async ():Promise<void>=>{
@@ -66,7 +65,6 @@ const APost = ():JSX.Element =>{
 
         }
         catch(err){
-            console.log(err)
             navigate("/error")
         }
 

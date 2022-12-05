@@ -6,12 +6,16 @@ import { changePersonalDescription } from "../../services/user.services"
 
 // Interfaces
 import { propsPersonalInfo } from "../../interfaces/interfaces"
-import { AuthContext, AuthWrapper } from "../../context/auth.context"
+import { AuthContext } from "../../context/auth.context"
+
+// Paquetes externos
+import { useNavigate } from "react-router-dom"
 
 
 const PersonalDescription = ({userId, getData, info}: propsPersonalInfo)=>{
 
     const {usuario} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const [personalInfo, setPersonalInfo] = useState<any>(info)
     const [click, setClick] = useState<boolean>(false)
@@ -33,7 +37,7 @@ const PersonalDescription = ({userId, getData, info}: propsPersonalInfo)=>{
                 getData()
             }
             catch(err){
-                console.log(err)
+                navigate("/error")
             }
             return
         }

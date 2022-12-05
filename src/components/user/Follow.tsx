@@ -1,5 +1,11 @@
+// Hooks
 import { useEffect, useState } from "react"
-import { addUser, getFriends, substractUser, verifyFriends } from "../../services/user.services"
+
+// Services
+import { getFriends, verifyFriends } from "../../services/user.services"
+
+// Paquetes externos
+import {useNavigate} from "react-router-dom"
 
 interface propsFollow {
     userId: string | undefined,
@@ -11,6 +17,8 @@ const Follow = ({userId, username}: propsFollow):JSX.Element =>{
     const [isFollowed, setIsFollowed] = useState<boolean>()
     const [friendsArr, setFriendsArr] = useState<any>()
 
+    const navigate = useNavigate()
+
     useEffect(()=>{
         gettingFriends()
     }, [])
@@ -21,34 +29,28 @@ const Follow = ({userId, username}: propsFollow):JSX.Element =>{
             setFriendsArr(response)
         }
         catch(err){
-            console.log(err)
+            navigate("/error")
         }
     }
 
     const handleFollow = async ()=>{
         try{
         
-            console.log(friendsArr.data, "array")
-            console.log(userId, "user")
             if(friendsArr?.data.indexOf(userId) == -1){
-                console.log("Lo sigues")
                 setIsFollowed(true)
-                const response = await verifyFriends(userId, username)
-                console.log(response.data.message, "hola")
+                await verifyFriends(userId, username)
                 gettingFriends()
                 return
             }
 
-            console.log("No lo sigues")
-            const response = await verifyFriends(userId, username)
+            await verifyFriends(userId, username)
             gettingFriends()
-            console.log(response.data, "hola")
 
             setIsFollowed(false)
 
         }
         catch(err){
-            console.log(err)
+            navigate("/error")
         }
     }
 

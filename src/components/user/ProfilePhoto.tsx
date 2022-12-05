@@ -10,6 +10,7 @@ import { useContext, useState } from "react"
 
 // Contexto
 import { AuthContext } from "../../context/auth.context"
+import { useNavigate } from "react-router-dom"
 
 
 interface propsPhoto{
@@ -22,6 +23,7 @@ interface propsPhoto{
 const ProfilePhoto = ({photo, userId, getData}:propsPhoto):JSX.Element=>{
 
     const {usuario} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const [click, setClick] = useState<boolean>(false)
     const [urlImage, setUrlImage] = useState<any>(photo)
@@ -39,18 +41,14 @@ const ProfilePhoto = ({photo, userId, getData}:propsPhoto):JSX.Element=>{
 
         }
         catch(err){
-            console.log(err)
+            navigate("/error")
         }
     }
 
     const uploadImage = async (e: React.ChangeEvent<any>): Promise<void>=>{
 
-        console.log(e?.target.files[0])
-
         const form: any = new FormData()
-        form.append("image", e?.target.files[0])
-        console.log(form)
-        
+        form.append("image", e?.target.files[0]) 
 
         try{
 
@@ -59,7 +57,7 @@ const ProfilePhoto = ({photo, userId, getData}:propsPhoto):JSX.Element=>{
 
         }
         catch(err){
-            console.log(err)
+            navigate("/error")
         }
 
     }

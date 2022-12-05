@@ -73,7 +73,7 @@ const AllPosts = ():JSX.Element=>{
                         <div className="avatar-container">
                             <img src={e.author.profilePhoto ? e.author.profilePhoto : avatar} alt="avatar usuario" />
                         </div>
-                        <p>{e.author.username}</p>
+                        <Link to={`/user/${e.author._id}`}><p>{e.author.username}</p></Link>
                     </section>
                     <section className="post-section img-post">
                         <img src={e.photo} alt="foto"/>

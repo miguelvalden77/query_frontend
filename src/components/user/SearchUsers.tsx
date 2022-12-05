@@ -17,7 +17,6 @@ const SearchUsers = ({setUsers}:propsSearchUser):JSX.Element =>{
     const handleSearch = async ()=> {
         try{
             const response = await getSearchUsers(userSearch)
-            console.log(response.data)
             setUsers(response.data)
         }
         catch(err){

@@ -1,8 +1,5 @@
 // Hooks
-import { useEffect, useState, useContext } from "react"
-
-// Context
-import { AuthContext } from "../../context/auth.context"
+import { useEffect, useState} from "react"
 
 // Interfaces
 import { propsLike } from "../../interfaces/post.interfaces"
@@ -14,16 +11,20 @@ import { likePost } from "../../services/like.service"
 import Like from "../../assets/like.png"
 import NotLike from "../../assets/not-like.png"
 
+// Paquetes externos
+import { useNavigate } from "react-router-dom"
+
 
 const Likes = ({id, getData, likesArray, usuario}: propsLike):JSX.Element =>{
 
     const [info, setInfo] = useState<boolean>()
+
+    const navigate = useNavigate()
     
     useEffect(()=>{
         verifyLike()
     }, [])
     
-    console.log(likesArray)
     const verifyLike = async ()=>{
         
         try{
@@ -37,7 +38,7 @@ const Likes = ({id, getData, likesArray, usuario}: propsLike):JSX.Element =>{
 
         }
         catch(err){
-            console.log(err)
+            navigate("/error")
         }
     }
 
@@ -50,7 +51,7 @@ const Likes = ({id, getData, likesArray, usuario}: propsLike):JSX.Element =>{
             getData()
         }
         catch(err){
-            console.log(err)
+            navigate("/error")
         }
     }
 

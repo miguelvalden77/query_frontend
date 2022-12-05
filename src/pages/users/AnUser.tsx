@@ -2,7 +2,7 @@
 import { useContext, useEffect, useState } from "react"
 
 // Paquetes externos
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
 // Componentes
 import Likes from "../../components/post/Likes"
@@ -33,6 +33,7 @@ const AnUser = ():JSX.Element=>{
     const {id} = useParams()
 
     const {usuario} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const [user, setUser] = useState<user>()
     const [likes, setLikes] = useState<any>()
@@ -53,7 +54,7 @@ const AnUser = ():JSX.Element=>{
             setLoader(false)
         }
         catch(err){
-            console.log(err)
+            navigate("/error")
         }
     }   
 
@@ -68,7 +69,7 @@ const AnUser = ():JSX.Element=>{
                     <ProfilePhoto photo={user.profilePhoto} userId={user._id} getData={getTheUser}/>
                     <div className="description-container">
                     <PersonalDescription info={user.personalDescription} userId={user._id} getData={getTheUser}/>
-                    <Follow userId={id} username={usuario?.username}/>
+                    {usuario?.id != user._id && <Follow userId={id} username={usuario?.username}/>}
                     </div>
                 </section>
                 <section className="main-profile">

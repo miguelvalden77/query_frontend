@@ -9,7 +9,7 @@ import {getUserPosts} from "../../services/post.services"
 import avatar from "../../assets/avatar.png"
 
 // Paquetes externos
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 // Componentes
 import Likes from "../../components/post/Likes"
@@ -28,6 +28,7 @@ import ProfilePhoto from "../../components/user/ProfilePhoto"
 const Profile = ():JSX.Element=>{
 
     const {usuario, isUserActive, authenticateUser} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const [likes, setLikes] = useState<any>()
     const [posts, setPosts] = useState<post>()
@@ -54,7 +55,7 @@ const Profile = ():JSX.Element=>{
             setLoader(false)
         }
         catch(err){
-            console.log(err)
+            navigate("/error")
         }
     }
 

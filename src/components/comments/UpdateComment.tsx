@@ -22,7 +22,6 @@ const UpdateComment = ({idComment, description, getData}: props):JSX.Element=>{
         e.preventDefault()
 
         try{
-            console.log(descComment)
             const comment = {description: descComment}
             await updateAComment(idComment, comment)
             getData()

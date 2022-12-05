@@ -43,7 +43,6 @@ const Login = ():JSX.Element =>{
             if(err.response.status == 400){
                 setError(err.response.data.errorMessage)
             } else{
-                console.log(err)
                 navigate("/error")
             }
 
