@@ -48,7 +48,7 @@ const PersonalDescription = ({userId, getData, info}: propsPersonalInfo)=>{
 
     return <section className="description-section">
         {
-            click ? <input onChange={handleChange} value={personalInfo} name="personalDescription"/> : <p>{personalInfo}</p>
+            click ? <input onChange={handleChange} value={personalInfo} name="personalDescription"/> : <p>{personalInfo ? personalInfo : "No hay estado aún"}</p>
         }
         {userId == usuario?.id && <button style={click ? {borderRadius: "0px 3px 3px 0px"} : {borderRadius: "3px"}} onClick={handleClick}>Update</button>}
     </section>

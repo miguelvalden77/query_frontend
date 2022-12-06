@@ -22,6 +22,7 @@ import { getPersonalDescription } from "../../services/user.services"
 // Interfaces
 import { post } from "../../interfaces/post.interfaces"
 import ProfilePhoto from "../../components/user/ProfilePhoto"
+import Loader from "../../components/loader/Loader"
 
 
 
@@ -60,7 +61,7 @@ const Profile = ():JSX.Element=>{
     }
 
     if(loader){
-        return <h2>Loading ...</h2>
+        return <Loader/>
     }
 
     if(isUserActive == true){
@@ -70,6 +71,7 @@ const Profile = ():JSX.Element=>{
                 <ProfilePhoto photo={usuario?.profilePhoto} getData={getData} userId={usuario?.id}/>
                 <div className="description-container">
                     <PersonalDescription info={info} userId={usuario?.id} getData={getData}/>
+                    <p className="following">Following <span>{usuario?.friends?.length}</span></p>
                 </div>
             </section>
             
@@ -78,7 +80,7 @@ const Profile = ():JSX.Element=>{
 
 
             {
-                posts && posts.posts.map((e: post, index: number)=>{
+                posts?.posts?.length > 0 ? posts?.posts.map((e: post, index: number)=>{
                     return <article className="post-card profile-card" key={index}>
 
                     <section className="post-section author-post">
@@ -101,7 +103,7 @@ const Profile = ():JSX.Element=>{
                     </section>
                     
                 </article>
-                })
+                }): <h2>No hay posts subidos</h2>
             }
             </div>
         </main>

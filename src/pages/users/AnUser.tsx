@@ -70,6 +70,7 @@ const AnUser = ():JSX.Element=>{
                     <div className="description-container">
                     <PersonalDescription info={user.personalDescription} userId={user._id} getData={getTheUser}/>
                     {usuario?.id != user._id && <Follow userId={id} username={usuario?.username}/>}
+                    <p className="following">Following <span>{user.friends?.length}</span></p>
                     </div>
                 </section>
                 <section className="main-profile">

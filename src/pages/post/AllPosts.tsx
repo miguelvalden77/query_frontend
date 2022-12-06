@@ -17,6 +17,7 @@ import { likesArr } from "../../services/like.service"
 
 // Recursos
 import avatar from "../../assets/avatar.png"
+import Loader from "../../components/loader/Loader"
 
 
 interface arrLikes {
@@ -60,7 +61,7 @@ const AllPosts = ():JSX.Element=>{
     }
 
     if(loader){
-        return <h2>Loading ...</h2>
+        return <Loader/>
     }
 
     return <main className="main-all-posts">

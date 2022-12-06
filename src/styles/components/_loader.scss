@@ -1,0 +1,66 @@
+.center-body{
+    padding-top: 3rem;
+}
+
+.loader-square{
+    position: relative;
+  }
+
+    .loader-square::after,
+    .loader-square::before {
+
+    content: "";
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    display: block;
+
+  }
+
+  .loader-square::after {
+
+    margin: 0 auto 0 auto;
+    border: 4px solid #0558b7;
+    animation:rotate2 0.5s infinite 
+    ease-in-out;
+
+  }
+
+  .loader-square::before {
+
+    margin: 30px auto 0 auto;
+    border: 4px solid #d07f05;
+    animation: rotate1 0.5s infinite 
+    ease-in-out;
+
+  }
+
+  @keyframes rotate2 {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        margin-top: 15px;
+    }
+
+    100% {
+        transform: rotate(-90deg);
+    }
+  }
+
+  @keyframes rotate1 {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        margin-top: 20px;
+    }
+
+    100% {
+        transform: rotate(90deg);
+    }
+}

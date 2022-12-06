@@ -17,7 +17,7 @@ export interface post {
     _id: string,
     title: string,
     photo: string,
-    posts: post[],
+    posts: post[] | any,
     author: author
     comments: comment[],
     likes: number,
