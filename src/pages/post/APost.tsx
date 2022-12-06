@@ -2,7 +2,7 @@
 import { useEffect, useState, useContext } from "react"
 
 // Paquetes externos
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
 // Context
 import { AuthContext } from "../../context/auth.context"
@@ -78,7 +78,7 @@ const APost = ():JSX.Element =>{
                         <div className="avatar-container">
                             <img src={post.author.profilePhoto ? post.author.profilePhoto : avatar} alt="avatar usuario" />
                         </div>
-                        <p>{post.author.username}</p>
+                        <Link to={`/user/${post.author._id}`}><p>{post.author.username}</p></Link>
                 </section>
                 <section className="post-section img-post">
                     <img src={post.photo} alt="foto"/>
@@ -89,7 +89,7 @@ const APost = ():JSX.Element =>{
                             { post.likes != 1 ? <p>{post.likes} <span>likes</span></p> : <p>{post.likes} <span>like</span></p>}
                         </div>
                         <div className="post-title-section">
-                            <h2 className="title-post text-center">{post.title}</h2>
+                            <h4 className="title-post text-center">{post.title}</h4>
                         </div>
                 </section>
                 <section className="comment-section">

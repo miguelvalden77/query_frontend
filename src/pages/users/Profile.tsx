@@ -98,7 +98,7 @@ const Profile = ():JSX.Element=>{
                             { e.likes != 1 ? <p>{e.likes} <span>likes</span></p> : <p>{e.likes} like</p>}
                         </div>
                         <div className="post-title-section">
-                            <Link to={`/post/${e._id}/single`}><h2 className="title-post text-center">{e.title}</h2></Link>
+                            <Link to={`/post/${e._id}/single`}><h4 className="title-post text-center">{e.title}</h4></Link>
                         </div>
                     </section>
                     
