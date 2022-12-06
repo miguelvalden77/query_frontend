@@ -1,7 +1,7 @@
 import { post } from "./post.interfaces"
 
 export default interface user {
-    username: string, //aqui
+    username?: string, //aqui
     email?: string,
     role?: string,
     id?: string,
@@ -10,9 +10,9 @@ export default interface user {
     _id?: string,
     personalDescription?: string,
     posts?: post[],
-    friends: string[]
+    friends?: string[]
 }
 
 export default interface props {
-    children: JSX.Element | JSX.Element[]
+    children?: JSX.Element | JSX.Element[]
 }
