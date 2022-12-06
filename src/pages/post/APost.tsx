@@ -12,6 +12,7 @@ import AddComment from "../../components/comments/AddComment"
 import DeletePost from "../../components/post/DeletePost"
 import UpdateComment from "../../components/comments/UpdateComment"
 import Likes from "../../components/post/Likes"
+import Loader from "../../components/loader/Loader"
 
 // Services
 import { getPost } from "../../services/post.services"
@@ -56,13 +57,8 @@ const APost = ():JSX.Element =>{
             const likesArray = await likesArr(usuario?.id)
             setLikes(likesArray)
 
-            // const response = await getPost(id)
-            // setPost(response.data.post)
-            // setComments(response.data.comments)
             getAPost()
-
             setLoader(false)
-
         }
         catch(err){
             navigate("/error")
@@ -72,7 +68,7 @@ const APost = ():JSX.Element =>{
 
 
     if(loader){
-        return <h2>Loading ...</h2>
+        return <Loader/>
     }
 
     return <main className="main-only-post">

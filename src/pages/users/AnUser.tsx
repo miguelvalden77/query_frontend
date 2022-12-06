@@ -25,6 +25,7 @@ import { likesArr } from "../../services/like.service"
 // Components
 import Follow from "../../components/user/Follow"
 import { AuthContext } from "../../context/auth.context"
+import Loader from "../../components/loader/Loader"
 
 
 
@@ -59,7 +60,7 @@ const AnUser = ():JSX.Element=>{
     }   
 
     if(loader){
-        return <p>Loading ...</p>
+        return <Loader/>
     }
 
     return <main>
