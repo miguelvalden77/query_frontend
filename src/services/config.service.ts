@@ -1,8 +1,11 @@
 // Paquetes externos
 import axios from "axios"
+import { setupCache } from 'axios-cache-interceptor';
+
+const service = axios.create({baseURL: "http://localhost:5005/api/"})
+// https://query-backend.onrender.com/api
 
 
-const service = axios.create({baseURL: "https://query-backend.onrender.com/api"})
 
 service.interceptors.request.use((config)=>{
 
@@ -17,5 +20,6 @@ service.interceptors.request.use((config)=>{
     return config
 
 })
+
 
 export default service

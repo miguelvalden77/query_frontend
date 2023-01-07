@@ -50,8 +50,8 @@ const AllPosts = ():JSX.Element=>{
             setLikes(likesArray)
 
             const response = await showAllPosts()
-            setPosts(response.data.reverse())
-
+            setPosts(response)
+            console.log(response)
             setLoader(false)
         }
         catch(err){

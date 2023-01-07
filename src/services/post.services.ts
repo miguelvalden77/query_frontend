@@ -6,8 +6,19 @@ import {postCreate} from "../interfaces/interfaces";
 import { AxiosPromise } from "axios";
 
 
-const showAllPosts = ():Promise<AxiosPromise>=>{
-    return service.get("/post/all-posts")
+const showAllPosts = async ():Promise<any>=>{
+    const bool = localStorage.getItem("all-posts")
+
+    if(bool == null){
+        const response: any = await service.get("/post/all-posts")
+        localStorage.setItem("all-posts", JSON.stringify(response.data))
+        const data = JSON.parse(localStorage.getItem("all-posts"))
+        
+        return data
+    }
+    
+    const data: any = localStorage.getItem("all-posts")
+    return JSON.parse(data)
 }
 
 const getUserPosts = (id: string | undefined):Promise<AxiosPromise>=>{
