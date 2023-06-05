@@ -14,9 +14,10 @@ const SearchUsers = ({setUsers}:propsSearchUser):JSX.Element =>{
     const [userSearch, setUserSearch] = useState<string>("")
 
     const handleChangeUser = (e: React.ChangeEvent<HTMLInputElement>)=> setUserSearch(e.target.value)
-    const handleSearch = async ()=> {
+    const handleSearch = async (): Promise<void>=> {
         try{
             const response = await getSearchUsers(userSearch)
+            console.log(response.data)
             setUsers(response.data)
         }
         catch(err){

@@ -20,7 +20,7 @@ const AllUsers = (): JSX.Element =>{
         <SearchUsers setUsers={setUsers}/>
         <section className="all-users-container">
             {
-                users ? users.map((e: user, index: number)=>{
+                (users != undefined && users?.length > 0) ? users.map((e: user, index: number)=>{
                     return <article key={index} className="user-container">
                         <div className="user-photo-container">
                             <img src={e.profilePhoto ? e.profilePhoto : avatar} alt="profile foto" />

@@ -14,6 +14,9 @@ import {postCreate} from "../../interfaces/interfaces"
 import { createPost} from "../../services/post.services"
 import { upload } from "../../services/upload.service"
 
+// Images
+import avatar from "../../assets/avatar_foto.jpg"
+
 interface data {
     title: string,
     author: string | undefined | null
@@ -77,8 +80,8 @@ const AddPost = ():JSX.Element=>{
             <label htmlFor="photo">Foto</label>
             <input onChange={uploadImage} type="file" name="photo"/>
         </div>
-
-        {urlImage && <img className="img-create" src={urlImage} alt="foto" />}
+        
+        <img className="img-create" src={urlImage ? urlImage : avatar} alt="foto"/>
 
         <button className="auth-button">Crear</button>
     </form>
