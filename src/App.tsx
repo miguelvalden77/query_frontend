@@ -1,6 +1,3 @@
-// Hooks
-import { useState } from 'react'
-
 // Estilos
 import './styles/styles.scss'
 

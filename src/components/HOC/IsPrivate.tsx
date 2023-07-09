@@ -1,11 +1,11 @@
 // Hooks
-import { useContext } from "react" 
+import { useContext, useEffect } from "react" 
 
 // Context
 import { AuthContext } from "../../context/auth.context"
 
 // Paquetes externos
-import { Navigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 
 // interface props {
 //     children: JSX.Element | null | undefined
@@ -13,14 +13,19 @@ import { Navigate } from "react-router-dom"
 
 
 
-const isPrivate =({children} :  any): JSX.Element =>{
+const isPrivate =({children} :  any): JSX.Element | any =>{
 
     const {isUserActive} = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+
+        if(isUserActive !== true) navigate("/login")
+
+    }, [])
 
     if(isUserActive === true){
         return children
-    } else{
-        return <Navigate to={"/login"}/>
     }
 
 
