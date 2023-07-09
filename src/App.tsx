@@ -24,6 +24,7 @@ import AnUser from './pages/users/AnUser'
 import Navbar from './components/Navbar'
 import NonUsers from './components/HOC/NonUsers'
 import IsPrivate from "./components/HOC/IsPrivate"
+import IndexChat from './pages/chat/IndexChat'
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path='/post/:id/single' element={<IsPrivate><APost/></IsPrivate>}/>
         <Route path='/users/search' element={<IsPrivate><AllUsers/></IsPrivate>}/>
         <Route path='/user/:id' element={<IsPrivate><AnUser/></IsPrivate>}/>
+        <Route path='/chat' element={<IsPrivate><IndexChat/></IsPrivate>}/>
 
         {/* Errores */}
         <Route path='/error' element={<Error/>}/>

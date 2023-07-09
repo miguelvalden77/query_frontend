@@ -33,6 +33,7 @@ const Navbar = ():JSX.Element=>{
             <nav className="main-navbar">
                 <NavLink to={"/profile"}><img width={30} src={Logo} alt="logo"/></NavLink>
                 <section className="nav-container">
+                    <NavLink to={"/chat"}>Chat</NavLink>
                     <NavLink to={"/users/search"}>Usuarios</NavLink>
                     <NavLink to={"/allPosts"}>Posts</NavLink>
                     <NavLink to={"/post/create"}>Crear post</NavLink>

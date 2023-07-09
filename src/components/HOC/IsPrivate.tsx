@@ -13,7 +13,7 @@ import { Navigate } from "react-router-dom"
 
 
 
-const isPrivate =({children} :any): JSX.Element =>{
+const isPrivate =({children} :  any): JSX.Element =>{
 
     const {isUserActive} = useContext(AuthContext)
 
