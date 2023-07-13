@@ -67,11 +67,12 @@ const Profile = ():JSX.Element=>{
     if(isUserActive == true){
         return <main>
 
-            <section className="info-container">
+            <section className="info-container" style={{marginTop: "2rem"}}>
                 <ProfilePhoto photo={usuario?.profilePhoto} getData={getData} userId={usuario?.id}/>
                 <div className="description-container">
                     <PersonalDescription info={info} userId={usuario?.id} getData={getData}/>
-                    <p className="following">Following <span>{usuario?.friends?.length}</span></p>
+                    <p className="following">Siguiendo <span>{usuario?.friends?.length}</span></p>
+                    <p className="following">Publicaciones <span>{posts?.posts?.length}</span></p>
                 </div>
             </section>
             

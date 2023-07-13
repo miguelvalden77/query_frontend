@@ -64,7 +64,7 @@ const AllPosts = ():JSX.Element=>{
         return <Loader/>
     }
 
-    return <main className="main-all-posts">
+    return <main className="main-all-posts" style={{marginTop: "2rem"}}>
 
         {
             posts && posts.length > 0 ? posts.map((e: post, index: number)=>{

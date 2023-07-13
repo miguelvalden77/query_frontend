@@ -19,7 +19,6 @@ const FriendsSidebar = ({setReceiver, receiver}: any): JSX.Element => {
     const fetchFriends = async () =>{
 
         const {data} = await getFriendsInfo(usuario?.username)
-        console.log({data})
         setFriends(data.friends)
     }
 

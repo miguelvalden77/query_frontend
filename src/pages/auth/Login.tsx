@@ -50,7 +50,7 @@ const Login = ():JSX.Element =>{
 
     }
     
-    return <div className="flex-center flex-column">
+    return <div className="flex-center flex-column" style={{marginTop: "2.5rem"}}>
         <main className="auth-card m-auto">
             <form className="login-form" onSubmit={handleSubmit}>
                 <h2 className="t-center">Query</h2>

@@ -25,7 +25,7 @@ const SearchUsers = ({setUsers}:propsSearchUser):JSX.Element =>{
         }
     }
 
-    return <section className="search-section">
+    return <section className="search-section" style={{marginTop: "2.5rem"}}>
         <input onChange={handleChangeUser} value={userSearch} type="text" placeholder="search users"/>
         <button onClick={handleSearch}>Search</button>
     </section>

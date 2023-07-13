@@ -11,6 +11,7 @@
 
 .messages_container{
     width: 100%;
+    // padding-top: 1rem;
 }
 
 .contact_card{
@@ -31,6 +32,7 @@
 
 .chat_body{
     height: calc(80vh - 1px);
+    overflow-y: scroll;
 }
 
 .chat_input{
@@ -44,6 +46,44 @@
     outline: none;
     padding-inline: 0.5rem;
     font-size: 1.25rem;
+}
+
+// .messages_container{
+//     height: 100%;
+//     overflow-y: scroll;
+// }
+
+.time_message{
+    text-align: right;
+    display: block;
+    padding-top: 0.5rem;
+}
+
+.own_message{
+    margin-left: auto;
+    width: fit-content;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    border-radius: 10px 0 10px 10px;
+    background-color: rgb(8, 122, 237);
+    color: whitesmoke;
+}
+
+.own_message:first-child{
+    margin-top: 0;
+}
+
+.receiver_message{
+    margin-right: auto;
+    width: fit-content;
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    margin-left: 1rem;
+    background-color: whitesmoke;
+    border-radius: 0px 10px 10px 10px;
+    box-shadow: 0 0.5px 1px rgb(49, 49, 49);
+
 }
 
 .friends_aside{
@@ -63,7 +103,6 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 1px solid black;
     overflow: hidden;
 }
 
