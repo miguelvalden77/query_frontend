@@ -35,8 +35,8 @@ const Navbar = ():JSX.Element=>{
                 <section className="nav-container">
                     <NavLink to={"/chat"}>Chat</NavLink>
                     <NavLink to={"/users/search"}>Usuarios</NavLink>
-                    <NavLink to={"/allPosts"}>Posts</NavLink>
-                    <NavLink to={"/post/create"}>Crear post</NavLink>
+                    <NavLink to={"/allPosts"}>Publicaciones</NavLink>
+                    <NavLink to={"/post/create"}>Publicar</NavLink>
                     <img className="logout" onClick={handleLogout} src={Logout} alt="logout" width={17}/>
                 </section>
             </nav>
@@ -47,8 +47,8 @@ const Navbar = ():JSX.Element=>{
         <nav className="main-navbar">
             <NavLink to={"/"}><img width={30} src={Logo} alt="logo"/></NavLink>
             <section className="nav-container">
-                <NavLink to={"/login"}>Login</NavLink>
-                <NavLink to={"/signup"}>Signup</NavLink>
+                <NavLink to={"/login"}>Entra</NavLink>
+                <NavLink to={"/signup"}>Regístrate</NavLink>
             </section>
         </nav>
     </section>

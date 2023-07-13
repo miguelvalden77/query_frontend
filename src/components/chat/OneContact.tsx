@@ -24,7 +24,6 @@ const OneContact = ({image, username, setReceiver, friend, receiver}: Props): JS
 
     const getTheLastMessage = async () => {
         const {data} = await getLastMessage(usuario?.id, friend._id)
-        console.log(data)
         setLastMessage(data[0].message)
     }
     const updateReceiver = (receiver: any)=> setReceiver(receiver)

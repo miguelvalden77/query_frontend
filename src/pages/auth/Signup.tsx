@@ -44,7 +44,7 @@ const Signup = ():JSX.Element =>{
 
     }
 
-    return <main className="flex-center flex-column">
+    return <main className="flex-center flex-column" style={{marginTop: "2.5rem"}}>
         <section className="auth-card m-auto">
             <form className="login-form" onSubmit={handleSubmit}>
                 <h2 className="t-center">Query</h2>
@@ -53,16 +53,16 @@ const Signup = ():JSX.Element =>{
                 </div>
 
                 <div>
-                    <input className="input-auth" placeholder="email" onChange={handleChange} value={data.email} name="email" type="text" />
+                    <input className="input-auth" placeholder="correo" onChange={handleChange} value={data.email} name="email" type="text" />
                 </div>
 
                 <div>
-                    <input className="input-auth" placeholder="password" onChange={handleChange} value={data.password} name="password" type="password" />
+                    <input className="input-auth" placeholder="contraseña" onChange={handleChange} value={data.password} name="password" type="password" />
                 </div>
 
-                <button className="auth-button">Sign up!</button>
+                <button className="auth-button">Regístrate</button>
 
-                <small className="t-center">¿Ya tienes una cuenta? <NavLink to={"/login"}>Login</NavLink></small>
+                <small className="t-center">¿Ya tienes una cuenta? <NavLink to={"/login"}>Entra</NavLink></small>
             </form>
         </section>
         {

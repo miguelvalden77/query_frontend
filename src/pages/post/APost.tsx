@@ -71,7 +71,7 @@ const APost = ():JSX.Element =>{
         return <Loader/>
     }
 
-    return <main className="main-only-post">
+    return <main className="main-only-post" style={{marginTop: "2.5rem"}}>
         {
             post && <article className="post-card">
                 <section className="post-section author-post">

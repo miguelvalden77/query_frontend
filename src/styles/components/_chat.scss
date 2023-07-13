@@ -32,7 +32,7 @@
 
 .chat_body{
     height: calc(80vh - 1px);
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .chat_input{
@@ -71,7 +71,7 @@
 }
 
 .own_message:first-child{
-    margin-top: 0;
+    margin-top: 0.5rem;
 }
 
 .receiver_message{

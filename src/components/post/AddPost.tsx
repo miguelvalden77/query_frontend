@@ -74,7 +74,7 @@ const AddPost = ():JSX.Element=>{
     return <form className="form-createPost" onSubmit={handleSubmit}>
     
         <div>
-            <input className="input-auth input-title" placeholder="Title" value={data.title} onChange={handleChange} type="text" name="title"/>
+            <input className="input-auth input-title" placeholder="Titulo" value={data.title} onChange={handleChange} type="text" name="title"/>
         </div>
         <div className="input-post-section">
             <label htmlFor="photo">Foto</label>

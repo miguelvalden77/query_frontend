@@ -67,7 +67,7 @@ const ProfilePhoto = ({photo, userId, getData}:propsPhoto):JSX.Element=>{
             <img src={urlImage ? urlImage : avatar} alt="profile photo"/>
         </div>
         {click ? <input onChange={uploadImage} type="file"/> : null}
-        {usuario?.id == userId && <button className="photo-button" onClick={handleSubmit}>change photo</button>}
+        {usuario?.id == userId && <button className="photo-button" onClick={handleSubmit}>Cambiar foto</button>}
     </section>
 }
 
