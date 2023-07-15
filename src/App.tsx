@@ -24,7 +24,7 @@ import IsPrivate from "./components/HOC/IsPrivate"
 import IndexChat from './pages/chat/IndexChat'
 
 
-function App() {
+function App(): JSX.Element {
   
 
   return (
