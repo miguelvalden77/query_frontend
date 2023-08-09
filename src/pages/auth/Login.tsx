@@ -2,34 +2,34 @@
 import { ChangeEvent, useState, useContext } from "react"
 
 // Paquetes externos
-import {useNavigate, NavLink} from "react-router-dom"
+import { useNavigate, NavLink } from "react-router-dom"
 
 // Interfaces
 import data from "../../interfaces/auth.interfaces"
 import userLogged from "../../interfaces/interfaces"
 
 // Services
-import {loginUser} from "../../services/auth.services"
+import { loginUser } from "../../services/auth.services"
 
 // Context
 import { AuthContext } from "../../context/auth.context"
 
 
-const Login = ():JSX.Element =>{
+const Login = (): JSX.Element => {
 
     const navigate = useNavigate()
-    const {authenticateUser} = useContext(AuthContext)
+    const { authenticateUser } = useContext(AuthContext)
 
-    const [data, setData] = useState<data>({username: "", password: ""})
+    const [data, setData] = useState<data>({ username: "", password: "" })
     const [error, setError] = useState<string>()
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>)=> setData({...data, [e.target.name]: e.target.value})
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>)=>{
-        
-        e.preventDefault()
-        const usuario: userLogged = {username: data.username, password: data.password}
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => setData({ ...data, [e.target.name]: e.target.value })
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
-        try{
+        e.preventDefault()
+        const usuario: userLogged = { username: data.username, password: data.password }
+
+        try {
 
             const response = await loginUser(usuario)
             const authToken = response.data.authToken
@@ -38,36 +38,38 @@ const Login = ():JSX.Element =>{
 
             navigate("/profile")
 
-        }catch(err: any){
+        } catch (err: any) {
 
-            if(err.response.status == 400){
+            if (err.response.status == 400) {
                 setError(err.response.data.errorMessage)
-            } else{
+            } else {
                 navigate("/error")
             }
 
         }
 
     }
-    
-    return <div className="flex-center flex-column" style={{marginTop: "2.5rem"}}>
+
+    return <div className="flex-center flex-column" style={{ marginTop: "2.5rem" }}>
         <main className="auth-card m-auto">
             <form className="login-form" onSubmit={handleSubmit}>
                 <h2 className="t-center">Query</h2>
-                <div>
-                    <input className="input-auth" placeholder="usuario" onChange={handleChange} value={data.username} name="username" type="text" />
-                </div>
-                <div>
-                    <input className="input-auth" placeholder="contraseña" onChange={handleChange} value={data.password} name="password" type="password" />
-                </div>
+                <section className="inputs-auth">
+                    <div>
+                        <input className="input-auth" placeholder="usuario" onChange={handleChange} value={data.username} name="username" type="text" />
+                    </div>
+                    <div>
+                        <input className="input-auth" placeholder="contraseña" onChange={handleChange} value={data.password} name="password" type="password" />
+                    </div>
 
-                <button className="auth-button">Entra</button>
+                    <button className="auth-button">Entra</button>
+                </section>
                 <small className="t-center">¿No tienes cuenta?  <NavLink to={"/signup"}>Regístrate</NavLink></small>
             </form>
-    </main>
-                {
-                    error && <small className="errorMessage t-center">{error}</small>
-                }
+        </main>
+        {
+            error && <small className="errorMessage t-center">{error}</small>
+        }
     </div>
 
 }

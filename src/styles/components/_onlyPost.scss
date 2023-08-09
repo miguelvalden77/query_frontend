@@ -1,21 +1,24 @@
-.main-only-post{
+.main-only-post {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.comment-section{
+.comment-section {
     padding-inline: 1.3rem;
     margin-bottom: 1rem;
     font-size: 0.75rem;
+    flex-direction: column;
+    display: flex;
+    gap: 0.4rem;
 
-    b{
+    b {
         margin-right: 0.25rem;
     }
 }
 
-.add-comment-input{
+.add-comment-input {
     border: none;
     font-size: 0.65rem;
     padding: 0.5rem;
@@ -25,16 +28,16 @@
     width: 100%;
 }
 
-.create-comment{
+.create-comment {
     border-top: 1px solid $secondary-gray;
-    
-    form{
+
+    form {
         display: flex;
         justify-content: space-between;
     }
 }
 
-.create-comment-button{
+.create-comment-button {
     border: none;
     color: $secondary-blue;
     font-size: 0.65rem;
@@ -43,24 +46,24 @@
     cursor: pointer;
 }
 
-.comment-container{
+.comment-container {
 
     display: flex;
 
-    button{
+    button {
         border: none;
         font-size: 0.6rem;
         background-color: inherit;
     }
 
-    
-    
-    .comment{
+
+
+    .comment {
         margin-right: 1.25rem;
     }
 }
 
-.update{
+.update {
     color: $secondary-blue;
     cursor: pointer;
     border: none;
@@ -69,7 +72,7 @@
     background-color: inherit;
 }
 
-.delete{
+.delete {
     cursor: pointer;
     color: $error-color;
     border: none;
@@ -78,12 +81,12 @@
     margin-right: 0.5rem;
 }
 
-.update-comment-form{
+.update-comment-form {
     display: flex;
     align-items: center;
 }
 
-.update-input{
+.update-input {
     border: 0.5px solid $secondary-gray;
     width: 100%;
     padding: 0.25rem;
@@ -92,7 +95,7 @@
     width: 270px;
 }
 
-.delete-post-button{
+.delete-post-button {
     color: $error-color;
     border: 1px solid $error-color;
     background-color: transparent;

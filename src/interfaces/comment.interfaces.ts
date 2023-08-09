@@ -4,7 +4,8 @@ export interface comment {
         username: string,
         _id: string
     },
-    _id: string
+    _id: string,
+    createdAt: string
 }
 
 export interface commentAddProps {

@@ -29,23 +29,23 @@ import Loader from "../../components/loader/Loader"
 
 
 
-const AnUser = ():JSX.Element=>{
+const AnUser = (): JSX.Element => {
 
-    const {id} = useParams()
+    const { id } = useParams()
 
-    const {usuario} = useContext(AuthContext)
+    const { usuario } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const [user, setUser] = useState<user>()
     const [likes, setLikes] = useState<any>()
     const [loader, setLoader] = useState<boolean>(true)
 
-    useEffect(()=>{
+    useEffect(() => {
         getTheUser()
     }, [])
 
-    const getTheUser = async () =>{
-        try{
+    const getTheUser = async () => {
+        try {
             const response = await getAnUser(id)
             setUser(response.data)
 
@@ -54,52 +54,52 @@ const AnUser = ():JSX.Element=>{
 
             setLoader(false)
         }
-        catch(err){
+        catch (err) {
             navigate("/error")
         }
-    }   
+    }
 
-    if(loader){
-        return <Loader/>
+    if (loader) {
+        return <Loader />
     }
 
     return <main>
         {
             user && <div>
                 <section className="info-container">
-                    <ProfilePhoto photo={user.profilePhoto} userId={user._id} getData={getTheUser}/>
+                    <ProfilePhoto photo={user.profilePhoto} userId={user._id} getData={getTheUser} />
                     <div className="description-container">
-                    <PersonalDescription info={user.personalDescription} userId={user._id} getData={getTheUser}/>
-                    {usuario?.id != user._id && <Follow userId={id} username={usuario?.username}/>}
-                    <p className="following">Following <span>{user.friends?.length}</span></p>
+                        <PersonalDescription info={user.personalDescription} userId={user._id} getData={getTheUser} />
+                        {usuario?.id != user._id && <Follow userId={id} username={usuario?.username} />}
+                        <p className="following">Siguiendo <span>{user.friends?.length}</span></p>
                     </div>
                 </section>
                 <section className="main-profile">
                     {
-                       user.posts ? user.posts?.map((e: post, index: number)=>{
+                        user.posts ? user.posts?.map((e: post, index: number) => {
                             return <article className="post-card profile-card" key={index}>
 
-                            <section className="post-section author-post">
-                                <div className="avatar-container">
-                                    <img src={user?.profilePhoto ? user.profilePhoto : avatar} alt="avatar usuario" />
-                                </div>
-                                <p>{e.author.username}</p>
-                            </section>
-                            <section className="post-section img-post">
-                                <img src={e.photo} alt="foto"/>
-                            </section>
-                            <section className="last-post-section">
-                                <div className="likes-container">
-                                    <Likes getData={getTheUser} id={e._id} likesArray={likes} usuario={user}/>
-                                    { e.likes != 1 ? <p>{e.likes} <span>likes</span></p> : <p>{e.likes} like</p>}
-                                </div>
-                                <div className="post-title-section">
-                                    <Link to={`/post/${e._id}/single`}><h4 className="title-post text-center">{e.title}</h4></Link>
-                                </div>
-                            </section>
-                            
-                        </article>
-                       }) : <p>Hola</p>
+                                <section className="post-section author-post">
+                                    <div className="avatar-container">
+                                        <img src={user?.profilePhoto ? user.profilePhoto : avatar} alt="avatar usuario" />
+                                    </div>
+                                    <p>{e.author.username}</p>
+                                </section>
+                                <section className="post-section img-post">
+                                    <img src={e.photo} alt="foto" />
+                                </section>
+                                <section className="last-post-section">
+                                    <div className="likes-container">
+                                        <Likes getData={getTheUser} id={e._id} likesArray={likes} usuario={user} />
+                                        {e.likes != 1 ? <p>{e.likes} <span>likes</span></p> : <p>{e.likes} like</p>}
+                                    </div>
+                                    <div className="post-title-section">
+                                        <Link to={`/post/${e._id}/single`}><h4 className="title-post text-center">{e.title}</h4></Link>
+                                    </div>
+                                </section>
+
+                            </article>
+                        }) : <p>Hola</p>
                     }
                 </section>
             </div>

@@ -1,4 +1,4 @@
-.auth-card{
+.auth-card {
     width: 270px;
     height: 270px;
     background-color: $secondary-background;
@@ -9,7 +9,14 @@
     border: 1px solid $secondary-gray;
 }
 
-.login-form{
+.inputs-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,25 +25,26 @@
 
 }
 
-.input-auth{
+.input-auth {
     padding: 0.25rem 0.5rem;
     border-radius: 3px;
     border: 1px solid $secondary-gray;
 
-    &:focus{
+    &:focus {
         outline: 1.5px $secondary-blue solid;
     }
 }
 
-.auth-button{
+.auth-button {
     padding: 0.25rem 0.5rem;
     border-radius: 3px;
     border: 1px solid $secondary-gray;
     background-color: $tertiary-blue;
     color: $main-color;
+    width: 100%;
 }
 
-.errorMessage{
+.errorMessage {
     color: $error-color;
     max-width: 270px;
     margin-top: 1rem;

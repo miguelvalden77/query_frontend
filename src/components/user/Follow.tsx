@@ -1,42 +1,45 @@
 // Hooks
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 
 // Services
 import { getFriends, verifyFriends } from "../../services/user.services"
 
 // Paquetes externos
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import { AuthContext } from "../../context/auth.context"
 
 interface propsFollow {
     userId: string | undefined,
     username: string | undefined,
 }
 
-const Follow = ({userId, username}: propsFollow):JSX.Element =>{
+const Follow = ({ userId, username }: propsFollow): JSX.Element => {
 
     const [isFollowed, setIsFollowed] = useState<boolean>()
-    const [friendsArr, setFriendsArr] = useState<any>()
+    const [friendsArr, setFriendsArr] = useState<string[]>([])
+
+    const { setUsuario, usuario, authenticateUser } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
-    useEffect(()=>{
+    useEffect(() => {
         gettingFriends()
     }, [])
 
-    const gettingFriends = async ()=>{
-        try{
+    const gettingFriends = async () => {
+        try {
             const response = await getFriends(username)
-            setFriendsArr(response)
+            setFriendsArr(response.data)
         }
-        catch(err){
+        catch (err) {
             navigate("/error")
         }
     }
 
-    const handleFollow = async ()=>{
-        try{
-        
-            if(friendsArr?.data.indexOf(userId) == -1){
+    const handleFollow = async () => {
+        try {
+
+            if (friendsArr!.indexOf(userId!) == -1) {
                 setIsFollowed(true)
                 await verifyFriends(userId, username)
                 gettingFriends()
@@ -47,15 +50,16 @@ const Follow = ({userId, username}: propsFollow):JSX.Element =>{
             gettingFriends()
 
             setIsFollowed(false)
+            return
 
         }
-        catch(err){
+        catch (err) {
             navigate("/error")
         }
     }
 
-    return <button onClick={handleFollow}>{isFollowed == true ? "unfollow" : "follow"}</button>
-    
+    return <button onClick={handleFollow}>{isFollowed == true ? "Dejar de seguir" : "Seguir"}</button>
+
 }
 
 export default Follow

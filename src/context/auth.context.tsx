@@ -1,5 +1,5 @@
 // Hooks
-import {createContext, useEffect, useState} from "react"
+import { createContext, useEffect, useState } from "react"
 import { verifyService } from "../services/auth.services"
 
 // Interface
@@ -9,32 +9,33 @@ import props from "../interfaces/context.interfaces"
 interface contexto {
     usuario: user | null | undefined,
     isUserActive: boolean | null | undefined,
-    authenticateUser: ()=> Promise<void>,
+    authenticateUser: () => Promise<void>,
     setUsuario: Function
 }
 
 const AuthContext = createContext({} as contexto)
 
 
-function AuthWrapper({children}: props){
+function AuthWrapper({ children }: props) {
 
     const [isUserActive, setIsUserActive] = useState<boolean>()
     const [usuario, setUsuario] = useState<user | null>()
 
-    useEffect(()=>{
+    useEffect(() => {
         authenticateUser()
-    },[])
+    }, [])
 
-    const authenticateUser = async (): Promise<void>=>{
+    const authenticateUser = async (): Promise<void> => {
 
-        try{
-            
+        try {
+
             const response = await verifyService()
             setIsUserActive(true)
             setUsuario(response.data)
+            console.log("Ejectando¡¡¡")
 
         }
-        catch(err){
+        catch (err) {
 
             console.log(err)
             setIsUserActive(false)
@@ -44,7 +45,7 @@ function AuthWrapper({children}: props){
 
     }
 
-    const passedContext = {usuario, isUserActive, authenticateUser, setIsUserActive, setUsuario}
+    const passedContext = { usuario, isUserActive, authenticateUser, setIsUserActive, setUsuario }
 
     return <AuthContext.Provider value={passedContext}>
         {children}
@@ -53,4 +54,4 @@ function AuthWrapper({children}: props){
 }
 
 
-export {AuthContext, AuthWrapper}
+export { AuthContext, AuthWrapper }

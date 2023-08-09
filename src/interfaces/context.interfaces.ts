@@ -10,7 +10,8 @@ export default interface user {
     _id?: string,
     personalDescription?: string,
     posts?: post[],
-    friends?: string[]
+    friends?: string[],
+    followers?: string[]
 }
 
 export default interface props {

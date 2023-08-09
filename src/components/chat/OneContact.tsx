@@ -53,7 +53,7 @@ const OneContact = ({image, username, setReceiver, friend, receiver, socket}: Pr
             </div>
             <div className="info_contact_container">
                 <h4>{username}</h4>
-                <p>{lastMessage ? lastMessage : "Esperando ..."}</p>
+                <p>{lastMessage}</p>
             </div>
         </article>
     )
