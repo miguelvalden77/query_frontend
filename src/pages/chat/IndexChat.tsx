@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import FriendsSidebar from "../../components/chat/FriendsSidebar"
 import { createMessage, getMessages } from "../../services/chat.services"
 import { AuthContext } from "../../context/auth.context"
-import { timeHelper } from "../../utils/timeHelper"
+import { setDayIfDifferent, timeHelper } from "../../utils/timeHelper"
 
 
 import { io, Socket } from "socket.io-client";
@@ -58,9 +58,14 @@ const IndexChat = (): JSX.Element => {
                             chat_messages.length > 0 && chat_messages.map((message, index) => {
                                 return (
                                     <div key={index} className={(usuario?.id == message.author) ? "own_message" : "receiver_message"}>
-
                                         <p>{message.message}</p>
-                                        <small className="time_message">{timeHelper(message.createdAt)}</small>
+                                        <small className="time_message">
+                                            {timeHelper(message.createdAt)}
+                                            {
+                                                new Date(message.createdAt).getDate() != new Date().getDate() &&
+                                                <span style={{ marginLeft: "0.5rem" }}>{setDayIfDifferent(message.createdAt)}</span>
+                                            }
+                                        </small>
                                     </div>
                                 )
                             })
