@@ -26,6 +26,7 @@ import { likesArr } from "../../services/like.service"
 import Follow from "../../components/user/Follow"
 import { AuthContext } from "../../context/auth.context"
 import Loader from "../../components/loader/Loader"
+import UserInfo from "../../components/user/UserInfo"
 
 
 
@@ -69,9 +70,9 @@ const AnUser = (): JSX.Element => {
                 <section className="info-container">
                     <ProfilePhoto photo={user.profilePhoto} userId={user._id} getData={getTheUser} />
                     <div className="description-container">
-                        <PersonalDescription info={user.personalDescription} userId={user._id} getData={getTheUser} />
+                        <UserInfo id={id!} />
                         {usuario?.id != user._id && <Follow userId={id} username={usuario?.username} />}
-                        <p className="following">Siguiendo <span>{user.friends?.length}</span></p>
+                        <PersonalDescription info={user.personalDescription} userId={user._id} getData={getTheUser} />
                     </div>
                 </section>
                 <section className="main-profile">

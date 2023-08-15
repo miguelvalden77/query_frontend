@@ -23,6 +23,7 @@ import { getPersonalDescription } from "../../services/user.services"
 import { post } from "../../interfaces/post.interfaces"
 import ProfilePhoto from "../../components/user/ProfilePhoto"
 import Loader from "../../components/loader/Loader"
+import UserInfo from "../../components/user/UserInfo"
 
 
 
@@ -70,10 +71,8 @@ const Profile = (): JSX.Element => {
             <section className="info-container" style={{ marginTop: "2rem" }}>
                 <ProfilePhoto photo={usuario?.profilePhoto} getData={getData} userId={usuario?.id} />
                 <div className="description-container">
+                    <UserInfo id={usuario?.id!} />
                     <PersonalDescription info={info} userId={usuario?.id} getData={getData} />
-                    <p className="following">Siguiendo <span>{usuario?.friends?.length}</span></p>
-                    <p className="following">Seguidores <span>{usuario?.followers?.length}</span></p>
-                    <p className="following">Publicaciones <span>{posts?.posts?.length}</span></p>
                 </div>
             </section>
 

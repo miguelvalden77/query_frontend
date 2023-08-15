@@ -1,4 +1,4 @@
-.main-profile{
+.main-profile {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
@@ -6,24 +6,24 @@
     align-items: center;
 }
 
-.profile-card{
+.profile-card {
     width: 300px;
     overflow: hidden;
 }
 
-.profile-photo-container{
+.profile-photo-container {
 
     width: 160px;
     height: 160px;
     border-radius: 50%;
     overflow: hidden;
 
-    img{
+    img {
         width: 100%;
     }
 }
 
-.info-container{
+.info-container {
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -32,14 +32,14 @@
     padding-bottom: 0.5rem;
     border-bottom: solid 1px $secondary-gray;
 
-    button{
+    button {
         background-color: $main-color;
     }
 
 }
 
-.photo-container{
-    
+.photo-container {
+
     justify-self: center;
     display: flex;
     gap: 0.5rem;
@@ -48,7 +48,7 @@
 
 }
 
-.description-container{
+.description-container {
 
     justify-self: flex-start;
     align-self: center;
@@ -57,7 +57,7 @@
     align-items: flex-start;
     gap: 1rem;
 
-    button{
+    button {
         padding: 0.5rem 0.75rem;
         border-radius: 3px;
         border: solid 0.5px $secondary-gray;
@@ -65,26 +65,43 @@
 
 }
 
-.description-section{
+.user_info_container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
 
-    input{
+.follow_button {
+    cursor: pointer;
+}
+
+.description-section {
+
+    & {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    textarea {
         padding: 0.5rem 0.75rem;
         border-radius: 3px 0 0 3px;
         border: solid 0.5px $secondary-gray;
         border-right: none;
+        resize: vertical;
     }
 
-    button{
+    button {
         border-radius: 0 3px 3px 0;
     }
 
 }
 
-.following{
+.following {
     align-self: flex-start;
 }
 
-.photo-button{
+.photo-button {
     padding: 0.5rem 0.75rem;
     border-radius: 3px;
     border: solid 0.5px $secondary-gray;

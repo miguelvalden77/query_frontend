@@ -42,7 +42,7 @@ const AddComment = ({ post, getData }: commentAddProps): JSX.Element => {
 
     return <form onSubmit={handleSubmit}>
         <input className="add-comment-input" placeholder="deja un comentario ..." name="description" onChange={handleChange} value={description} />
-        <span>{description.length}</span>
+        <span>{description.length}/50</span>
         <button className="create-comment-button">Comment</button>
     </form>
 
