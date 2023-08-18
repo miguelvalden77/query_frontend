@@ -39,7 +39,7 @@ const substractUser = (userId: string | undefined, id: string | undefined): Prom
 }
 
 const getFriends = (username: string | undefined, userId: string): Promise<any> => {
-    return service.get(`/user/friends/${username}/${userId}`)
+    return service.get(`/user/friends/follow/${username}/${userId}`)
 }
 
 const getFriendsInfo = (username: string | undefined): Promise<any> => {

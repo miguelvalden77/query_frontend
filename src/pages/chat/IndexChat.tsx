@@ -21,6 +21,7 @@ const IndexChat = (): JSX.Element => {
 
     useEffect(() => {
         getAllMessages()
+        setMessage("")
     }, [receiver])
 
     const changeInput = (evt: React.ChangeEvent<HTMLInputElement>): void => {
@@ -53,9 +54,9 @@ const IndexChat = (): JSX.Element => {
             <section className="messages_container">
                 <div className="chat_body">
                     {/* <h1>{receiver ? receiver.username : "No hay chat"}</h1> */}
-                    <section className="messages_container" style={{ paddingTop: "1rem" }}>
+                    <section className="messages_container" style={{ paddingTop: "1rem", height: receiver == undefined || chat_messages.length == 0 ? "100%" : "" }}>
                         {
-                            chat_messages.length > 0 && chat_messages.map((message, index) => {
+                            chat_messages.length > 0 ? chat_messages.map((message, index) => {
                                 return (
                                     <div key={index} className={(usuario?.id == message.author) ? "own_message" : "receiver_message"}>
                                         <p>{message.message}</p>
@@ -68,7 +69,9 @@ const IndexChat = (): JSX.Element => {
                                         </small>
                                     </div>
                                 )
-                            })
+                            }) : <div className="no_message_container">
+                                <h1>Comienza a chatear {receiver == undefined ? "" : `con ${receiver.username}`}</h1>
+                            </div>
                         }
                     </section>
                 </div>

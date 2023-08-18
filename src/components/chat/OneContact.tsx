@@ -8,52 +8,51 @@ import { io, Socket } from "socket.io-client";
 interface Props {
     image: string | undefined,
     username: string | undefined,
-    setReceiver: (params: any)=>{} | undefined,
+    setReceiver: (params: any) => {} | undefined,
     friend: any,
     receiver: any,
     socket: any
 }
 
-const OneContact = ({image, username, setReceiver, friend, receiver, socket}: Props): JSX.Element =>{
+const OneContact = ({ image, username, setReceiver, friend, receiver, socket }: Props): JSX.Element => {
 
-    const {usuario} = useContext(AuthContext)
-    
+    const { usuario } = useContext(AuthContext)
+
+    const [isWritting, setIsWritting] = useState<boolean>(false)
     const [lastMessage, setLastMessage] = useState<string>("")
-    const [copyLastMessage, setCopyLastMessage] = useState<string>("")
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         getTheLastMessage()
     }, [])
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         writing()
 
     }, [socket])
 
     const writing = () => {
-        socket.on("writing:server", (data: any): any=>{
-            setLastMessage(data.mensaje)
+        socket.on("writing:server", (data: any): any => {
+            setIsWritting(true)
         })
-        setTimeout(()=>{
-            setLastMessage(copyLastMessage)
+        setTimeout(() => {
+            setIsWritting(false)
         }, 1000)
     }
-    
-    const getTheLastMessage = async () => {
-        const {data} = await getLastMessage(usuario?.id, friend._id)
-        setLastMessage(data[0].message)
-        setCopyLastMessage(data[0].message)
-    }
-    const updateReceiver = (receiver: any)=> setReceiver(receiver)
 
-    return(
-        <article onClick={()=>updateReceiver(friend)} className={`contact_card ${receiver?.username == username && "hover_card"}`}>
+    const getTheLastMessage = async () => {
+        const { data } = await getLastMessage(usuario?.id, friend._id)
+        setLastMessage(data[0].message)
+    }
+    const updateReceiver = (receiver: any) => setReceiver(receiver)
+
+    return (
+        <article onClick={() => updateReceiver(friend)} className={`contact_card ${receiver?.username == username && "hover_card"}`}>
             <div className="img_chat_container">
                 <img className="foto_chat" src={image ? image : defaultImg} alt="foto" />
             </div>
             <div className="info_contact_container">
                 <h4>{username}</h4>
-                <p>{lastMessage}</p>
+                <p>{isWritting ? "Escribiendo" : lastMessage}</p>
             </div>
         </article>
     )

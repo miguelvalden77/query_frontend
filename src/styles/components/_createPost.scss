@@ -1,5 +1,4 @@
-
-.form-createPost{
+.form-createPost {
     max-width: 460px;
     background-color: $secondary-background;
     display: flex;
@@ -10,35 +9,49 @@
     border-radius: 2px;
 
     @media screen and (max-width: 960px) {
-        &{
+        & {
             max-width: 400px;
         }
     }
 }
 
-.main-createPost{
+.label_file {
+    cursor: pointer;
+    background-color: lightblue;
+    color: #ffffff;
+    padding: 10px 20px;
+}
+
+#upload {
+    opacity: 0;
+    position: absolute;
+    z-index: -10;
+}
+
+.main-createPost {
     min-height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.input-title{
+.input-title {
     width: 94%;
 }
 
-.input-post-section{
+.input-post-section {
     position: relative;
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
 
-    label{
+    label {
         position: relative;
     }
 
 }
-.img-create{
+
+.img-create {
     margin: auto;
     max-height: 200px;
 }

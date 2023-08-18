@@ -6,29 +6,31 @@ import user from "../../interfaces/context.interfaces"
 import OneContact from "./OneContact"
 
 
-const FriendsSidebar = ({setReceiver, receiver, socket}: any): JSX.Element => {
+const FriendsSidebar = ({ setReceiver, receiver, socket }: any): JSX.Element => {
 
-    const {usuario} = useContext(AuthContext)
+    const { usuario } = useContext(AuthContext)
     const [friends, setFriends] = useState<user[]>([])
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchFriends()
     }, [])
 
-    const fetchFriends = async () =>{
+    const fetchFriends = async () => {
 
-        const {data} = await getFriendsInfo(usuario?.username)
+        console.log(usuario?.id)
+        const { data } = await getFriendsInfo(usuario?.id)
+        console.log(data)
         setFriends(data.friends)
     }
 
-    return(
+    return (
         <aside className="friends_aside">
             {
-            friends.length > 0
-            ? friends.map((friend, index)=> {
-                return <OneContact socket={socket} receiver={receiver} friend={friend} setReceiver={setReceiver} key={index} username={friend.username} image={friend.profilePhoto}/>
-            })
-            : <p>No hay amigos</p>
+                friends.length > 0
+                    ? friends.map((friend, index) => {
+                        return <OneContact socket={socket} receiver={receiver} friend={friend} setReceiver={setReceiver} key={index} username={friend.username} image={friend.profilePhoto} />
+                    })
+                    : <p>No hay amigos</p>
             }
         </aside>
     )
