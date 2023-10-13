@@ -10,11 +10,11 @@ interface Props {
     username: string | undefined,
     setReceiver: (params: any) => {} | undefined,
     friend: any,
-    receiver: any,
-    socket: any
+    receiver: any
 }
 
-const OneContact = ({ image, username, setReceiver, friend, receiver, socket }: Props): JSX.Element => {
+
+const OneContact = ({ image, username, setReceiver, friend, receiver }: Props): JSX.Element => {
 
     const { usuario } = useContext(AuthContext)
 
@@ -23,24 +23,12 @@ const OneContact = ({ image, username, setReceiver, friend, receiver, socket }: 
 
     useEffect(() => {
         getTheLastMessage()
+
     }, [])
-
-    useEffect(() => {
-        writing()
-
-    }, [socket])
-
-    const writing = () => {
-        socket.on("writing:server", (data: any): any => {
-            setIsWritting(true)
-        })
-        setTimeout(() => {
-            setIsWritting(false)
-        }, 1000)
-    }
 
     const getTheLastMessage = async () => {
         const { data } = await getLastMessage(usuario?.id, friend._id)
+        console.log(data)
         setLastMessage(data[0].message)
     }
     const updateReceiver = (receiver: any) => setReceiver(receiver)

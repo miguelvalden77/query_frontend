@@ -6,7 +6,7 @@ import user from "../../interfaces/context.interfaces"
 import OneContact from "./OneContact"
 
 
-const FriendsSidebar = ({ setReceiver, receiver, socket }: any): JSX.Element => {
+const FriendsSidebar = ({ setReceiver, receiver }: any): JSX.Element => {
 
     const { usuario } = useContext(AuthContext)
     const [friends, setFriends] = useState<user[]>([])
@@ -28,7 +28,7 @@ const FriendsSidebar = ({ setReceiver, receiver, socket }: any): JSX.Element => 
             {
                 friends.length > 0
                     ? friends.map((friend, index) => {
-                        return <OneContact socket={socket} receiver={receiver} friend={friend} setReceiver={setReceiver} key={index} username={friend.username} image={friend.profilePhoto} />
+                        return <OneContact receiver={receiver} friend={friend} setReceiver={setReceiver} key={index} username={friend.username} image={friend.profilePhoto} />
                     })
                     : <p>No hay amigos</p>
             }

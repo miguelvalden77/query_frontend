@@ -10,7 +10,6 @@ import { io, Socket } from "socket.io-client";
 
 
 const IndexChat = (): JSX.Element => {
-    const socket: Socket<any, any> = io("http://localhost:5005/");
 
     const { usuario } = useContext(AuthContext)
 
@@ -43,14 +42,9 @@ const IndexChat = (): JSX.Element => {
         setChat_messages(data)
     }
 
-    const writing = () => {
-        socket.emit("writing:client", { receiverId: receiver._id, userId: usuario?.id })
-        socket.disconnect()
-    }
-
     return (
         <main className="main_chat">
-            <FriendsSidebar setReceiver={setReceiver} receiver={receiver} socket={socket} />
+            <FriendsSidebar setReceiver={setReceiver} receiver={receiver} />
             <section className="messages_container">
                 <div className="chat_body">
                     {/* <h1>{receiver ? receiver.username : "No hay chat"}</h1> */}
@@ -76,7 +70,7 @@ const IndexChat = (): JSX.Element => {
                     </section>
                 </div>
                 <div className="chat_input">
-                    <input onChange={changeInput} onInput={writing} className="chat_text_input" type="text" value={message} />
+                    <input onChange={changeInput} className="chat_text_input" type="text" value={message} />
                     <button onClick={sendMessage} className="chat_button">Enviar</button>
                 </div>
             </section>

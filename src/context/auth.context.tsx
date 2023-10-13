@@ -32,8 +32,6 @@ function AuthWrapper({ children }: props) {
             const response = await verifyService()
             setIsUserActive(true)
             setUsuario(response.data)
-            console.log("Ejectando¡¡¡")
-
         }
         catch (err) {
 
