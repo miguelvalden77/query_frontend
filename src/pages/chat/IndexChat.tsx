@@ -64,7 +64,7 @@ const IndexChat = (): JSX.Element => {
                                     </div>
                                 )
                             }) : <div className="no_message_container">
-                                <h1>Comienza a chatear {receiver == undefined ? "" : `con ${receiver.username}`}</h1>
+                                <h1>Comienza a escribir mensajes {receiver == undefined ? "" : `con ${receiver.username}`}</h1>
                             </div>
                         }
                     </section>
